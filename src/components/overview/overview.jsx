@@ -1,8 +1,7 @@
 import './overview.scss'
 import { storage } from '../../firebase'
-import {ref, listAll, getDownloadURL, uploadBytesResumable} from 'firebase/storage'
-import { useContext, useEffect, useState } from 'react'
-import { Context } from '../context provider/context-provider'
+import {ref, listAll} from 'firebase/storage'
+import {useEffect, useState } from 'react'
 
 const Overview = () => {
     const [getFiles, setGetFiles] = useState([])
@@ -30,7 +29,7 @@ const Overview = () => {
                 <h2>Explore Courses</h2>
             </div>
 
-            <h2>Books</h2>
+            <h2>Books <i className='fa-solid fa-book'></i></h2>
             
             <div className="overview-content">      
                 {
@@ -46,7 +45,7 @@ const Overview = () => {
                 }
             </div>
 
-            <h2>Videos</h2>
+            <h2>Videos <i className='fa-solid fa-video'></i></h2>
             
             <div className="overview-content">      
                 {
