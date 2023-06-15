@@ -1,7 +1,42 @@
 @import "../variables";
 .settings{
+
+    .user-profile{
+        margin-bottom: 20px;
+    }
+
+    button{
+        padding: 10px 20px;
+        background-color: $activeColor;
+        color: $primaryTxtColor;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+
+        &.cancel{
+            background-color: red;
+            
+        }
+    }
+
+    .saved{
+        color: green;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    
     form{
+        margin: 20px 0;
         width: 60%;
+
+        p{
+            background-color: $primaryBgColor;
+            color: $primaryTxtColor;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: no-drop;
+        }
 
         button{
             padding: 10px 20px;
@@ -29,6 +64,13 @@
                 outline-color: $activeColor;
             }
         }
+    }
+
+    .edit-profile{
+        background-color: $primaryBgColor;
+        color: $primaryTxtColor;
+        padding: 10px;
+        border-radius: 10px;
     }
 }
 
