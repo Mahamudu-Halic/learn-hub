@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss'
+import Content from './components/contents/content'
+import Dashboard from './components/dashboard/dashboard'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import Login from './user authentication/login'
+import Register from './user authentication/register'
+import { useContext } from 'react'
+import { Context } from './components/context provider/context-provider'
+const App = ()=> {
+  const {currentUser} = useContext(Context)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const ProtectedRoute = ({children}) => {
+    if(!currentUser){
+      return <Navigate to='/login' />
+    }
+
+    return children
+  }
+  return(
+    <div>
+      {
+        currentUser ? <div className='App'>
+          <Dashboard />
+          <Content />
+        </div>
+        :
+      <Routes>
+        <Route path="/" element={<Login />}/>
+          <Route path="/register" element={<Register />} />
+      </Routes>
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
