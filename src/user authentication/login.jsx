@@ -1,8 +1,9 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Link } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, provider } from "../firebase";
+import { auth, db, provider } from "../firebase";
 import "./style.scss"
+import { doc, setDoc } from "firebase/firestore";
 const Login = () => {
     // const {}
     let email, password
@@ -34,10 +35,20 @@ const Login = () => {
     const handleClick = () => {
         console.log('clicked')
         signInWithPopup(auth, provider)
-        .then((result) => {
+        .then( async (result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
+            await setDoc(doc(db, 'users', user.uid), {
+                uid: user.uid,
+                displayName: user.displayName,
+                email: user.email,
+                description: '',
+                schoolEmail: '',
+                program: '',
+                phoneNumber: '',
+                level: ''
+            })
             console.log(user)
         }).catch((error) => {
             const errorCode = error.code;

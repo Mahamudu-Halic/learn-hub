@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, provider, db, storage } from "../firebase";
+import { auth, provider, db } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { setDoc, doc, addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import "./style.scss"
 
 const Register = () => {
@@ -21,6 +21,11 @@ const Register = () => {
                 uid: res.user.uid,
                 displayName,
                 email,
+                description: '',
+                schoolEmail: '',
+                program: '',
+                phoneNumber: '',
+                level: ''
             })
 
             await setDoc(doc(db, 'files', res.user.uid), {})
@@ -42,9 +47,14 @@ const Register = () => {
             await setDoc(doc(db, 'users', user.uid), {
                 uid: user.uid,
                 displayName: user.displayName,
-                email: user.email
+                email: user.email,
+                description: '',
+                schoolEmail: '',
+                program: '',
+                phoneNumber: '',
+                level: ''
             })
-            await setDoc(doc(db, 'files', user.uid), {})
+            // await setDoc(doc(db, 'files', user.uid), {})
             navigate('/')
         }).catch((error) => {
             const errorCode = error.code;
