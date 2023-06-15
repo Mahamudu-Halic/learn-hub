@@ -1,0 +1,57 @@
+@import '../variables';
+.upload-file{
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    gap: 20px;
+    form{
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        label{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: white;
+            padding: 10px;
+            text-transform: capitalize;
+            margin-bottom: 10px;
+
+        }
+
+        input{
+            width: 100%;
+            background: $primaryBgColor;
+            color: $primaryTxtColor;
+        }
+
+        select, button{
+            width: 100%;
+            outline: none;
+            border: none;
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+
+        select{
+            padding: 10px;
+        }
+
+        button{
+            padding: 10px 20px;
+            background-color: $primaryBgColor;
+            color: $primaryTxtColor;
+        }
+
+        p{
+            text-align: center;
+            color: green;
+            font-weight: 600;
+        }
+
+    }
+}

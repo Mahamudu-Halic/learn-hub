@@ -1,0 +1,41 @@
+@import "../variables";
+.settings{
+    form{
+        width: 60%;
+
+        button{
+            padding: 10px 20px;
+            background-color: $activeColor;
+            color: $primaryTxtColor;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+
+        }
+        .form-group{
+            margin: 20px 0;
+            label{
+                display: block;
+                margin-bottom: 10px;
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+
+            input, select, textarea{
+                width: 100%;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                outline-color: $activeColor;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .settings{
+        form{
+            width: 100%;
+        }
+    }
+}

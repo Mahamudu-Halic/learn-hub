@@ -1,0 +1,24 @@
+.courses{
+    display: flex;
+    flex-wrap: wrapfon;
+    // align-items: center;
+    gap: 20px;
+
+    .categories{
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .items{
+        ul {
+            background-color: #212130;
+            padding: 20px;
+            color: white;
+
+            li{
+                margin: 40px 0;
+                list-style: none;
+            }
+        } 
+    }
+}

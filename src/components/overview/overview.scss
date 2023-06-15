@@ -1,0 +1,44 @@
+@import '../variables';
+.overview{
+
+    .title{
+        margin-bottom: 30px;
+    }
+
+    &-content{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    a{
+        text-decoration: none;
+
+        div{
+            background-color: $secondaryBgColor;
+            border-radius: 10px;
+            width: 300px;
+            height: 60px;
+            overflow: hidden;
+            
+
+            h3{
+                margin: 20px;
+                color: $primaryTxtColor;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    .video{
+        width: 300px;
+
+        video{
+            width: 100%;
+        }
+
+        h3{
+            text-transform: capitalize;
+        }
+    }
+}
