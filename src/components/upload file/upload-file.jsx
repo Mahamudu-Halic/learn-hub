@@ -1,6 +1,5 @@
 import { storage } from "../../firebase"
-import { useContext, useState } from "react"
-import { Context } from "../context provider/context-provider"
+import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
 import './upload-file.scss'
 const selectOptions = [
@@ -28,8 +27,6 @@ const UploadFile = () => {
     const [fileName, setFileName] = useState(file)
     const [course, setCourse] = useState('select course')
     const [success, setSuccess] = useState(false)
-    //useContext
-    const {user} = useContext(Context)
 
     // handleChange
     const handleChange = e => {
@@ -50,7 +47,7 @@ const UploadFile = () => {
         e.preventDefault()
         console.log(e.target[0].files)
         try{
-                if(course != 'select course' && file){
+                if(course !== 'select course' && file){
                 const storageRef = ref(storage, `${course}/files`)
                 const fileRef = ref(storageRef, file.name)
                 uploadBytesResumable(fileRef, file)
@@ -71,12 +68,6 @@ const UploadFile = () => {
             console.log(err)
         }
     }
-
-    // handleUpload
-    const handleUpload = () => {
-        
-    }
-
     const handleSelect = e => {
         setCourse(e.target.value)
     }
