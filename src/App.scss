@@ -1,0 +1,81 @@
+@import './components/variables';
+.App{
+    display: flex;
+    // width: 90%;
+    // margin: 20px auto;
+    background-color: $primaryBgColor;
+    // border-radius: 10px;
+    padding: 5px;
+    height: 100vh;
+}
+
+.dashboard{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+
+    i{
+        margin-right: 20px;
+    }
+    h1{
+        color: $primaryTxtColor;
+        margin: 20px 0 50px;
+    }
+    
+    a{
+        display: block;
+        width: 90%;
+        text-decoration: none;
+        padding: 15px;
+        color: $primaryTxtColor;
+        border-radius: 10px;
+
+
+        &:hover{
+            background-color: $activeColor;
+        }
+
+        &.active{
+            background-color: $activeColor;
+        }
+    }
+
+    .bottom{
+        margin-top: auto;
+        margin-bottom: 10px;
+        text-align: center;
+        color: $primaryTxtColor;
+        
+    }
+    
+    button{
+        text-transform: capitalize;
+        padding: 10px;
+        background: none;
+        color: $primaryTxtColor;
+        width: 80%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 10px;
+        
+        &:hover{
+            background-color: $activeColor;
+        }
+    }
+
+    span{
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+
+}
+
+.content{
+    flex: 1;
+    background-color: $primaryTxtColor;
+    color: $primaryBgColor;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-y: scroll;
+}
