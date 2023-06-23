@@ -1,7 +1,7 @@
 import { storage } from "../../firebase"
 import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
-import './upload-file.scss'
+import './upload-material.scss'
 const selectOptions = [
     {
         id: 1,
@@ -17,16 +17,41 @@ const selectOptions = [
     },
     {
         id: 4,
-        option: 'engineering'
+        option: 'electrical engineering'
+    },
+    {
+        id: 5,
+        option: 'social science'
+    },
+    {
+        id: 6,
+        option: 'chemistry'
+    },
+    {
+        id: 7,
+        option: 'law'
+    },
+    {
+        id: 8,
+        option: 'acturial science'
+    },
+    {
+        id: 9,
+        option: 'biology'
+    },
+    {
+        id: 10,
+        option: 'computer engineering'
     },
 ]
 
-const UploadFile = () => {
+const UploadMaterial = () => {
     //useState
     const [file, setFile] = useState('')
     const [fileName, setFileName] = useState(file)
     const [course, setCourse] = useState('select course')
     const [success, setSuccess] = useState(false)
+    const [uploading, setUploading] = useState(false)
 
     // handleChange
     const handleChange = e => {
@@ -42,39 +67,46 @@ const UploadFile = () => {
         }
     }
 
+    //handleUpload
+    const handleUpload = async folder => {
+        const storageRef = ref(storage, `courses/${course}/${folder}`)
+        const fileRef = ref(storageRef, file.name)
+        const overviewRef = ref(storage, `overview/${folder}`)
+        const overviewFileRef = ref(overviewRef, file.name)
+        await uploadBytesResumable(fileRef, file)
+        await uploadBytesResumable(overviewFileRef, file)
+        .then(() => {
+            setUploading(false)
+            setSuccess(true)
+            setFileName('')
+            setFile('')
+        })
+    }
+
     //handleSubmit
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        console.log(e.target[0].files)
         try{
-                if(course !== 'select course' && file){
-                const storageRef = ref(storage, `${course}/files`)
-                const fileRef = ref(storageRef, file.name)
-                uploadBytesResumable(fileRef, file)
-                const overviewRef = ref(storage, 'overview/files')
-                const overviewFileRef = ref(overviewRef, file.name)
-                uploadBytesResumable(overviewFileRef, file)
-    
-                setSuccess(true)
-                setInterval(() => {
-                    setSuccess(false)
-                    setFileName('')
-                    setFile('')
-                    e.target.value = []
-                    console.log('errrrr')
-                }, 3000);
+            if(course !== 'select course' && file){
+                setUploading(true)
+                if(fileName.includes('.doc') || fileName.includes('.ppt') || fileName.includes('.pdf')){
+                    return handleUpload('files')
+                }
+                
+                return handleUpload('videos')
             }
         }catch(err){
             console.log(err)
         }
     }
+    //handleSelect
     const handleSelect = e => {
         setCourse(e.target.value)
     }
 
     return(
         <div className="upload-file">
-            <h3>Upload New File</h3>
+            <h3>Upload Material</h3>
             <form action="#" onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="file">{fileName}</label>
@@ -93,11 +125,12 @@ const UploadFile = () => {
                     </select>
                 </div>
 
-                <button>upload</button>
+                <button><i className='fa-solid fa-upload'></i> upload</button>
+                {uploading && <p>uploading...</p>}
                 {success && <p>upload successful</p>}
             </form>
         </div>
     )
 }
 
-export default UploadFile
+export default UploadMaterial

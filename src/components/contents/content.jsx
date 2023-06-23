@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom"
 import Overview from "../overview/overview"
 import Courses from "../courses/courses"
-import NewCourse from "../add courses/add-new-course"
-import UploadFile from "../upload file/upload-file"
-import UploadVideo from "../upload video/upload-video"
+import Favorite from "../favorite/favorite"
+import UploadMaterial from "../upload material/upload-material"
 import Settings from "../settings/settings"
+import AddNewCourse from "../add new course/add-new-course"
 
 const Content = () => {
     return(
@@ -12,9 +12,9 @@ const Content = () => {
             <Routes>
                 <Route path='/' element={<Overview />} />
                 <Route path='/courses' element={<Courses />} />
-                <Route path='/add-course' element={<NewCourse />} />
-                <Route path='/upload-file' element={<UploadFile />} />
-                <Route path='/upload-video' element={<UploadVideo />} />
+                <Route path='/favorite' element={<Favorite />} />
+                <Route path='/add-new-course' element={<AddNewCourse />} />
+                <Route path='/upload-material' element={<UploadMaterial />} />
                 <Route path='/settings' element={<Settings />} />
             </Routes>
         </div>

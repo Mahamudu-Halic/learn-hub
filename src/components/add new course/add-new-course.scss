@@ -1,0 +1,45 @@
+.add-new-course{
+    background-color: black;
+    width: 400px;
+    color: #ddddd7;
+    text-transform: capitalize;
+    padding: 20px;
+    margin: 10% auto;
+
+    h3{
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .form-group{
+        margin-bottom: 20px;
+        
+        label{
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        input{
+            width: 100%;
+            padding: 10px;
+            border: solid 1px black;
+            border-radius: 10px 10px;
+        }
+    }
+
+    .btns{
+        button{
+            cursor: pointer;
+            padding: 10px 16px;
+            margin-right: 10px;
+            border: none;
+            outline: none;
+            background-color: red;
+
+            &.save-btn{
+                background-color: green;
+            }
+        }
+    }
+
+}

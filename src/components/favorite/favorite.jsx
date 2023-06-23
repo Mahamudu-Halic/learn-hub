@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { Context } from "../context provider/context-provider"
 
 
-const NewCourse = () => {
+const Favorite = () => {
     const {setNewCourses, newCourse, setCourses, courses} = useContext(Context)
 
     const handleClick = () => {
@@ -26,4 +26,4 @@ const NewCourse = () => {
     )
 }
 
-export default NewCourse
+export default Favorite

@@ -20,21 +20,22 @@ const dashboard = [
     },
     {
         id: 3,
-        url: '/add-course',
-        title: 'Add Course',
-        icon: "fa-solid fa-plus"
+        url: '/favorite',
+        title: 'Favorite',
+        icon: "fa-solid fa-star"
     },
-    {
-        id: 4,
-        url: '/upload-file',
-        title: 'Upload File',
-        icon: 'fa-solid fa-file-arrow-up'
-    },
+    // {
+    //     id: 4,
+    //     url: '/add-new-course',
+    //     title: 'Add New Course',
+    //     icon: 'fa-solid fa-plus'
+    // },
     {
         id: 5,
-        url: '/upload-video',
-        title: 'Upload Tutorial',
-        icon: 'fa-solid fa-video'
+        url: '/upload-material',
+        title: 'Upload Material',
+        // icon: 'fa-solid fa-file-arrow-up'
+        icon: 'fa-solid fa-upload'
     },
     {
         id: 6,
@@ -74,16 +75,24 @@ const Dashboard = () => {
 
 
     return(
-        <div className="dashboard">
-            <h1>LearnHub</h1>
+        <>
+        <div className="navbar">
+            <i className="hamburger fa-solid fa-bars" onClick={handleClick}></i>
+            <h3>LearnHub <i className="fa-solid fa-book-open"></i></h3>
+        </div>
+        <div className={`dashboard ${active && 'active'}`}>
+            <div className="dash-head">
+                <h1>LearnHub</h1>
+                <i className="fa-solid fa-close" onClick={handleClick}></i>
+            </div>
             {
                 dashboard.map(({id, url, title, icon}) => {
                     return(
                         <Link
-                            key={id}
-                            to={url}
-                            className={`${window.location.pathname === url ? 'active' : ''}`}
-                            onClick={handleClick}
+                        key={id}
+                        to={url}
+                        className={`${window.location.pathname === url ? 'active' : ''}`}
+                        onClick={handleClick}
                         >
                             <i className={icon}></i>
                             {title}
@@ -103,6 +112,7 @@ const Dashboard = () => {
                 </button>
             </div>
         </div>
+        </>
     )
 }
 

@@ -38,7 +38,6 @@ const Register = () => {
     }
     
     const handleClick = async () => {
-        
         signInWithPopup(auth, provider)
         .then( async (result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);

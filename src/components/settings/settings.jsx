@@ -76,6 +76,7 @@ const Settings = () => {
     //handle submit
     const handleSubmit = async e => {
         e.preventDefault()
+        setSaved(false)
         const updateProfile = doc(db, "users", user.uid);
 
         // update user profile
@@ -88,6 +89,7 @@ const Settings = () => {
             level
         })
         .then(() => setSaved(true))
+        .catch(err => console.log(err))
         
     }
 
@@ -146,10 +148,11 @@ const Settings = () => {
                     <input type="text" id="phoneNumber" value={phoneNumber} onChange={e => setphoneNumber(e.target.value)}/>
                 </div>
 
-                {/* level */}
+                {/* select level */}
                 <div className="form-group">
                     <label htmlFor="year">Year of Study:</label>
                     <select name="" id="year" value={level} onChange={e => setlevel(e.target.value)}>
+                        <option value="">Select year</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -168,12 +171,16 @@ const Settings = () => {
             {/* cancel */}
             <button 
                 className="cancel" 
-                onClick={handleClick}>
+                onClick={() => {
+                    handleClick()
+                    window.location.reload()
+                }}>
                     <i className="fa-solid fa-close"></i> Cancel
             </button>
             </>
         }
 
+        {/* edit button */}
         {
             !edit 
             && 

@@ -2,6 +2,7 @@ import { storage } from "../../firebase"
 import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
 // import './upload-file.scss'
+//select option
 const selectOptions = [
     {
         id: 1,
@@ -20,13 +21,15 @@ const selectOptions = [
         option: 'engineering'
     },
 ]
-
+//UploadVideo
 const UploadVideo = () => {
     //useState
     const [file, setFile] = useState('')
     const [fileName, setFileName] = useState(file)
     const [course, setCourse] = useState('select course')
     const [success, setSuccess] = useState(false)
+    const [uploading, setUploading] = useState(false)
+
     // handleChange
     const handleChange = e => {
         setSuccess(false)
@@ -42,26 +45,24 @@ const UploadVideo = () => {
     }
 
     //handleSubmit
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        console.log(e.target[0].files)
         try{
-                if(course !== 'select course' && file){
+            if(course !== 'select course' && file){
+                setUploading(true)
                 const storageRef = ref(storage, `${course}/videos`)
                 const fileRef = ref(storageRef, file.name)
-                uploadBytesResumable(fileRef, file)
+                await uploadBytesResumable(fileRef, file)
                 const overviewRef = ref(storage, 'overview/videos')
                 const overviewFileRef = ref(overviewRef, file.name)
-                uploadBytesResumable(overviewFileRef, file)
-    
-                setSuccess(true)
-                setInterval(() => {
-                    setSuccess(false)
+                await uploadBytesResumable(overviewFileRef, file)
+                .then(() => {
+                    setUploading(false)
+                    setSuccess(true)
                     setFileName('')
                     setFile('')
                     e.target.value = []
-                    console.log('errrrr')
-                }, 3000);
+                })
             }
         }catch(err){
             console.log(err)
@@ -94,6 +95,7 @@ const UploadVideo = () => {
                 </div>
 
                 <button>upload</button>
+                {uploading && <p>uploading...</p>}
                 {success && <p>upload successful</p>}
             </form>
         </div>
