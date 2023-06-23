@@ -45,6 +45,7 @@
 
         i{
             font-size: 25px;
+            display: none;
             cursor: pointer;
         }
         
@@ -198,6 +199,12 @@
         transition: 0.3s ease;
         &.active{
             left: 0px;
+        }
+
+        .dash-head{
+            i{
+                display: inline;
+            }
         }
     }
 
