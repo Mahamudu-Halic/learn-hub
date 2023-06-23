@@ -50,7 +50,8 @@ const Dashboard = () => {
     const [active, setActive] = useState(false)
     const {currentUser, user, setUser} = useContext(Context)
     // console.log('dashboard', currentUser)
-    const handleClick = () => {
+    const handleClick = e => {
+        console.log(e)
         setActive(!active)
     }
 
@@ -72,7 +73,7 @@ const Dashboard = () => {
 
         return (() => {getUser()})
     }, [])
-
+console.log(window.location.pathname)
 
     return(
         <>
@@ -92,7 +93,7 @@ const Dashboard = () => {
                         key={id}
                         to={url}
                         className={`${window.location.pathname === url ? 'active' : ''}`}
-                        onClick={handleClick}
+                        onClick={() => handleClick(url)}
                         >
                             <i className={icon}></i>
                             {title}
