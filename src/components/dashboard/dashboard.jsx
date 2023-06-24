@@ -7,20 +7,20 @@ import { doc, getDoc } from 'firebase/firestore'
 const dashboard = [
     {
         id: 1,
-        url: '/',
+        url: '',
         title: 'Overview',
         icon: 'fa-solid fa-house'
     },
     {
         id: 2,
-        url: '/courses',
+        url: 'courses',
         title: 'Courses',
         icon: 'fa-solid fa-book'
 
     },
     {
         id: 3,
-        url: '/favorite',
+        url: 'favorite',
         title: 'Favorite',
         icon: "fa-solid fa-star"
     },
@@ -32,14 +32,14 @@ const dashboard = [
     // },
     {
         id: 5,
-        url: '/upload-material',
+        url: 'upload-material',
         title: 'Upload Material',
         // icon: 'fa-solid fa-file-arrow-up'
         icon: 'fa-solid fa-upload'
     },
     {
         id: 6,
-        url: '/settings',
+        url: 'settings',
         title: 'Settings',
         icon: 'fa-solid fa-gear'
     },
@@ -51,7 +51,7 @@ const Dashboard = () => {
     const {currentUser, user, setUser} = useContext(Context)
     // console.log('dashboard', currentUser)
     const handleClick = e => {
-        console.log(e)
+        console.log(e, window.location.pathname.length - e.length)
         setActive(!active)
     }
 
@@ -92,7 +92,7 @@ console.log(window.location.pathname)
                         <Link
                         key={id}
                         to={url}
-                        className={`${window.location.pathname === url ? 'active' : ''}`}
+                        className={`${window.location.pathname === `/learn-hub/${url}` ? 'active' : ''}`}
                         onClick={() => handleClick(url)}
                         >
                             <i className={icon}></i>

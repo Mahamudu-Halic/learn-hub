@@ -11,11 +11,11 @@ const Content = () => {
         <div className="content">
             <Routes>
                 <Route path='/' element={<Overview />} />
-                <Route path='/courses' element={<Courses />} />
-                <Route path='/favorite' element={<Favorite />} />
-                <Route path='/add-new-course' element={<AddNewCourse />} />
-                <Route path='/upload-material' element={<UploadMaterial />} />
-                <Route path='/settings' element={<Settings />} />
+                <Route path='courses' element={<Courses />} />
+                <Route path='favorite' element={<Favorite />} />
+                <Route path='add-new-course' element={<AddNewCourse />} />
+                <Route path='upload-material' element={<UploadMaterial />} />
+                <Route path='settings' element={<Settings />} />
             </Routes>
         </div>
     )

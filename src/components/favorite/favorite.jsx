@@ -16,8 +16,8 @@ const Favorite = () => {
     const handleChange = e => {
         setNewCourses(e.target.value)
     }
-    console.log(newCourse)
-    console.log(courses)
+    // console.log(newCourse)
+    // console.log(courses)
     return(
         <div className="new-course">
             <input type="text" onChange={handleChange}/>
