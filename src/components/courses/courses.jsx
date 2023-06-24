@@ -54,12 +54,16 @@ const Courses = () => {
                 :
                 ''
             }
+
+            {
+                !getFiles.length && 
+                !getVideos.length &&
+                course !== '' && 
+                <p>no file or videos uploaded</p>
+            }
             <div className="files">
             {
                 //getFiles
-                !getFiles.length ? 
-                    course !== '' && <p>no file or videos uploaded</p>
-                :
                 getFiles.map((content, i) =>{
                     return(
                             <GenerateFiles 
