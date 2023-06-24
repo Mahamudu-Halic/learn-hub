@@ -194,9 +194,11 @@
     // dashboard
     .dashboard{
         position: fixed;
-        left: -200px;
+        left: -300px;
         background-color: $primaryBgColor;
+        padding: 0 10px;
         transition: 0.3s ease;
+        width: 50%;
         z-index: 1;
         &.active{
             left: 0px;
@@ -206,6 +208,14 @@
             i{
                 display: inline;
             }
+        }
+
+        a{
+            font-size: 18px;
+        }
+
+        .bottom{
+            font-size: 18px;
         }
     }
 
