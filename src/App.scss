@@ -187,8 +187,7 @@
     .navbar{
         display: flex;
         justify-content: space-between;
-        .hamburger{
-        }
+
     }
 
     // dashboard
@@ -198,13 +197,14 @@
         background-color: $primaryBgColor;
         padding: 0 10px;
         transition: 0.3s ease;
-        width: fit-content;
+        width: 300px;
         z-index: 1;
         &.active{
             left: 0px;
         }
 
         .dash-head{
+            font-size: 1rem;
             i{
                 display: inline;
             }
