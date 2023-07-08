@@ -89,7 +89,7 @@ const Settings = () => {
             level
         })
         .then(() => setSaved(true))
-        .catch(err => console.log(err))
+        .catch(err => console.log('settings',err))
         
     }
 

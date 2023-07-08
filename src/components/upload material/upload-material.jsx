@@ -2,54 +2,17 @@ import { storage } from "../../firebase"
 import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
 import './upload-material.scss'
-const selectOptions = [
-    {
-        id: 1,
-        option: 'select course'
-    },
-    {
-        id: 2,
-        option: 'computer science'
-    },
-    {
-        id: 3,
-        option: 'business'
-    },
-    {
-        id: 4,
-        option: 'electrical engineering'
-    },
-    {
-        id: 5,
-        option: 'social science'
-    },
-    {
-        id: 6,
-        option: 'chemistry'
-    },
-    {
-        id: 7,
-        option: 'law'
-    },
-    {
-        id: 8,
-        option: 'acturial science'
-    },
-    {
-        id: 9,
-        option: 'biology'
-    },
-    {
-        id: 10,
-        option: 'computer engineering'
-    },
-]
+import { useContext } from "react"
+import { Context } from "../context provider/context-provider"
 
 const UploadMaterial = () => {
+    //useContext
+    const {courseList} = useContext(Context)
     //useState
     const [file, setFile] = useState('')
     const [fileName, setFileName] = useState(file)
     const [course, setCourse] = useState('select course')
+    const [college, setCollege] = useState('')
     const [success, setSuccess] = useState(false)
     const [uploading, setUploading] = useState(false)
 
@@ -81,6 +44,7 @@ const UploadMaterial = () => {
             setFileName('')
             setFile('')
         })
+        .catch(err => console.log('upload', err))
     }
 
     //handleSubmit
@@ -96,12 +60,16 @@ const UploadMaterial = () => {
                 return handleUpload('videos')
             }
         }catch(err){
-            console.log(err)
+            console.log('upload',err)
         }
     }
-    //handleSelect
-    const handleSelect = e => {
+    //handleCourseSelect
+    const handleCourseSelect = e => {
         setCourse(e.target.value)
+    }
+    //handleCollegeSelect
+    const handleCollegeSelect = e => {
+        setCollege(e.target.value)
     }
 
     return(
@@ -114,15 +82,34 @@ const UploadMaterial = () => {
                 </div>
 
                 <div className="course">
-                    <select name="" id="" required onChange={handleSelect}>
-                        {
-                            selectOptions.map(({id, option}) => {
-                                return(
-                                    <option key={id}>{option}</option>
-                                )
-                            })
-                        }
+                    <select name="" id="" onChange={handleCollegeSelect}>
+                        <option value="">Select college</option>
+                        <option value='0'>College of Science</option>
+                        <option value="1">College of Engineering</option>
+                        <option value="2">College of Humanity and Social Science</option>
+                        <option value="3">College of Art and Built Environment</option>
+                        <option value="4">College of Health Science</option>
+                        <option value="5">College of Agriculture and Natural Resources</option>
                     </select>
+
+                    {
+                        college === '' ?
+
+                        <p className="requirement">**select college to see courses**</p>
+
+                        :
+
+                        <select name="" id="" required onChange={handleCourseSelect}>
+                            <option value="">select courses</option>
+                            {
+                                courseList[college].map(({id, course}) => {
+                                    return(
+                                        <option key={course}>{course}</option>
+                                        )
+                                    })
+                            }
+                        </select>
+                    }
                 </div>
 
                 <button><i className='fa-solid fa-upload'></i> upload</button>

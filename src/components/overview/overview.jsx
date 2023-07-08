@@ -10,19 +10,24 @@ const Overview = () => {
 
     //useEffect
     useEffect(() => {
-        //fetch files from firebase
-        const files = ref(storage, 'overview/files')
-        listAll(files)
-        .then(res => {
-            setGetFiles(res.items)
-        })
-        
-        //fetch videos from firebase
-        const videos = ref(storage, 'overview/videos')
-        listAll(videos)
-        .then(res => {
-            setGetVideos(res.items)
-        })
+        try {
+            //fetch files from firebase
+            const files = ref(storage, 'overview/files')
+            listAll(files)
+            .then(res => {
+                setGetFiles(res.items)
+            })
+            
+            //fetch videos from firebase
+            const videos = ref(storage, 'overview/videos')
+            listAll(videos)
+            .then(res => {
+                setGetVideos(res.items)
+            })
+            
+        } catch (error) {
+            console.log('overview', error)
+        }
     }, [])
 
     return(

@@ -51,7 +51,6 @@ const Dashboard = () => {
     const {currentUser, user, setUser} = useContext(Context)
     // console.log('dashboard', currentUser)
     const handleClick = e => {
-        console.log(e, window.location.pathname.length - e.length)
         setActive(!active)
     }
 
@@ -62,18 +61,21 @@ const Dashboard = () => {
 
     useEffect(() => {
         const getUser = async () => {
-            const docRef = doc(db, "users", currentUser.uid);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setUser(docSnap.data())
-            } else {
-            console.log("No such document!");
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setUser(docSnap.data())
+                } else {
+                console.log("No such document!");
+                }
+            } catch (error) {
+                console.log('dashboard getuser', error)
             }
         }
 
         return (() => {getUser()})
     }, [])
-console.log(window.location.pathname)
 
     return(
         <>

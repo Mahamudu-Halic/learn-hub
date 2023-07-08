@@ -39,6 +39,7 @@
 
         select{
             padding: 10px;
+            margin-bottom: 20px;
         }
 
         button{
@@ -51,6 +52,12 @@
             text-align: center;
             color: green;
             font-weight: 600;
+
+            &.requirement{
+                color: #f3422b;
+                font-size: 14px;
+                margin-top: -10px;
+            }
         }
 
     }
