@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export const Context = createContext()
 
@@ -30,75 +31,68 @@ const ContextProvider =({children}) => {
         //college of sciene
         [
             {
-                id: 0,
                 course: 'computer science'
             },
             {
-                id: 1,
                 course: 'mathematics'
             },
             {
-                id: 3,
                 course: 'chemistry'
             },
             {
-                id: 4,
                 course: 'physics'
             },
             {
-                id: 5,
                 course: 'theoritical and applied biology'
+            },
+            {
+                course: 'environmental science'
             },
         ],
 
         //college of engineering
         [
             {
-                id: 6,
                 course: 'electrical engineering'
             },
             {
-                id: 6,
                 course: 'mechanical engineering'
             },
             {
-                id: 6,
                 course: 'telecommunication engineering'
             },
             {
-                id: 6,
                 course: 'material engineering'
             },
             {
-                id: 6,
                 course: 'computer engineering'
+            },
+            {
+                course: 'aerospace engineering'
             }
         ],
 
         //college of humanity and social sciences
         [
             {
-                id: 7,
                 course: 'commercial law'
             },
             {
-                id: 6,
                 course: 'private law'
             },
             {
-                id: 6,
                 course: 'public law'
             },
             {
-                id: 6,
                 course: 'economics'
             },
             {
-                id: 6,
                 course: 'services management'
             },
             {
-                id: 6,
+                course: 'social science'
+            },
+            {
                 course: 'accounting and finance'
             }
         ],
@@ -106,23 +100,18 @@ const ContextProvider =({children}) => {
         //college of art and built environment
         [
             {
-                id: 6,
                 course: 'architecture'
             },
             {
-                id: 6,
                 course: 'industrial art'
             },
             {
-                id: 6,
                 course: 'painting and sculpture'
             },
             {
-                id: 6,
                 course: 'planning'
             },
             {
-                id: 6,
                 course: 'communication design'
             }
         ],
@@ -130,23 +119,18 @@ const ContextProvider =({children}) => {
         //college of health science
         [
             {
-                id: 6,
                 course: 'anatomy'
             },
             {
-                id: 6,
                 course: 'herbal medicine'
             },
             {
-                id: 6,
                 course: 'nursing'
             },
             {
-                id: 6,
                 course: 'medicine'
             },
             {
-                id: 6,
                 course: 'pharmaceutics'
             }
         ],
@@ -154,23 +138,18 @@ const ContextProvider =({children}) => {
         //college of agriculture and natural resources
         [
             {
-                id: 6,
                 course: 'animal science'
             },
             {
-                id: 6,
                 course: 'crop science'
             },
             {
-                id: 6,
                 course: 'agroforestry'
             },
             {
-                id: 6,
                 course: 'social forestery'
             },
             {
-                id: 6,
                 course: 'soil science'
             }
         ]

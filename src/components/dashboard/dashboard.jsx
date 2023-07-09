@@ -13,14 +13,14 @@ const dashboard = [
     },
     {
         id: 2,
-        url: 'courses',
+        url: '/courses',
         title: 'Courses',
         icon: 'fa-solid fa-book'
 
     },
     {
         id: 3,
-        url: 'favorite',
+        url: '/favorite',
         title: 'Favorite',
         icon: "fa-solid fa-star"
     },
@@ -32,14 +32,14 @@ const dashboard = [
     // },
     {
         id: 5,
-        url: 'upload-material',
+        url: '/upload-material',
         title: 'Upload Material',
         // icon: 'fa-solid fa-file-arrow-up'
         icon: 'fa-solid fa-upload'
     },
     {
         id: 6,
-        url: 'settings',
+        url: '/settings',
         title: 'Settings',
         icon: 'fa-solid fa-gear'
     },
@@ -94,7 +94,7 @@ const Dashboard = () => {
                         <Link
                         key={id}
                         to={url}
-                        className={`${window.location.pathname === `/learn-hub/${url}` ? 'active' : ''}`}
+                        className={`${window.location.pathname === `/learn-hub${url}` ? 'active' : ''}`}
                         onClick={() => handleClick(url)}
                         >
                             <i className={icon}></i>
@@ -113,7 +113,9 @@ const Dashboard = () => {
                 <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     logout
                 </button>
+            <   p>Halic&copy;2023</p>
             </div>
+
         </div>
         </>
     )

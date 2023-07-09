@@ -49,22 +49,22 @@ const UploadMaterial = () => {
 
     //handleSubmit
     const handleSubmit = async e => {
-        e.preventDefault()
-        try{
-            if(course !== 'select course' && file){
-                setUploading(true)
-                if(fileName.includes('.doc') || fileName.includes('.ppt') || fileName.includes('.pdf')){
-                    return handleUpload('files')
-                }
+        // e.preventDefault()
+        // try{
+        //     if(course !== 'select course' && file){
+        //         setUploading(true)
+        //         if(fileName.includes('.doc') || fileName.includes('.ppt') || fileName.includes('.pdf')){
+        //             return handleUpload('files')
+        //         }
                 
-                return handleUpload('videos')
-            }
-        }catch(err){
-            console.log('upload',err)
-        }
+        //         return handleUpload('videos')
+        //     }
+        // }catch(err){
+        //     console.log('upload',err)
+        // }
     }
     //handleCourseSelect
-    const handleCourseSelect = e => {
+    const handleSelect = e => {
         setCourse(e.target.value)
     }
     //handleCollegeSelect
@@ -99,7 +99,7 @@ const UploadMaterial = () => {
 
                         :
 
-                        <select name="" id="" required onChange={handleCourseSelect}>
+                        <select name="" id="" required onChange={handleSelect}>
                             <option value="">select courses</option>
                             {
                                 courseList[college].map(({id, course}) => {

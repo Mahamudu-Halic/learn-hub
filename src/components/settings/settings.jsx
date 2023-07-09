@@ -1,13 +1,14 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Context } from "../context provider/context-provider"
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 import './settings.scss'
 
 const Settings = () => {
-    const { user } = useContext(Context)
-
+    //useContext
+    const { user, setUser, currentUser } = useContext(Context)
+    //useState
     const [edit, setEdit] = useState(false)
     const [displayName, setdisplayName] = useState(user.displayName)
     const [description, setdescription] = useState(user.description)
@@ -26,6 +27,24 @@ const Settings = () => {
         setlevel(user.level)
         setschoolEmail(user.schoolEmail)
     }
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setUser(docSnap.data())
+                } else {
+                console.log("No such document!");
+                }
+            } catch (error) {
+                console.log('dashboard getuser', error)
+            }
+        }
+
+        return (() => {getUser()})
+    }, [displayName, description,program, schoolEmail, phoneNumber, level])
 
     //userProfile array list
     const userProfile = [
@@ -88,7 +107,10 @@ const Settings = () => {
             phoneNumber,
             level
         })
-        .then(() => setSaved(true))
+        .then(() => {
+            setSaved(true)
+        })
+        
         .catch(err => console.log('settings',err))
         
     }
@@ -125,7 +147,7 @@ const Settings = () => {
                 {/* display name */}
                 <div className="form-group">
                     <label htmlFor="displayName">Display Name:</label>
-                    <input type="text" id="displayName" value={displayName} onChange={e => setdisplayName(e.target.value)}/>
+                    <input type="text" id="displayName" value={displayName} onChange={e => setdisplayName(e.target.value)} maxLength='20' minLength='2' required/>
                 </div>
 
                 {/* description */}
@@ -173,7 +195,7 @@ const Settings = () => {
                 className="cancel" 
                 onClick={() => {
                     handleClick()
-                    window.location.reload()
+                    // window.location.reload()
                 }}>
                     <i className="fa-solid fa-close"></i> Cancel
             </button>
