@@ -90,7 +90,7 @@ const ContextProvider =({children}) => {
                 course: 'services management'
             },
             {
-                course: 'social science'
+                course: 'social work and sociology'
             },
             {
                 course: 'accounting and finance'
