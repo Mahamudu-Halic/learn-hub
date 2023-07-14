@@ -5,17 +5,18 @@ import { auth, db, provider } from "../firebase";
 import "./style.scss"
 import { doc, setDoc } from "firebase/firestore";
 import hub from '../images/hub.png'
-import { useContext } from "react";
-import { Context } from "../components/context provider/context-provider";
+import { useContext, useState } from "react";
+import { Context } from "../components/context-provider";
 const Login = () => {
     // useContext
     const {handleGoogleAuth} = useContext(Context)
-    let email, password
+    //useState
+    const [error, setError] = useState('')
     const handleSubmit = e => {
         e.preventDefault()
-        email = e.target[0].value
-        password = e.target[1].value
-        
+        const email = e.target[0].value
+        const password = e.target[1].value
+        setError('')
         try{
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -24,7 +25,9 @@ const Login = () => {
             .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorMessage)
+            console.log('eror',errorMessage)
+            console.log(errorCode)
+            setError(errorCode)
             });
         }
         catch(err){
@@ -36,28 +39,40 @@ const Login = () => {
         handleGoogleAuth()
     }
     return(
-        <div className="form-wrapper">
-            <div className="hub">
-                <img src={hub} 
-                    alt="" 
-                    width='100%'
-                />
+        <div className="login">
+            {/* title */}
+            <div className="title">
+                <h2>Learn<span>Hub</span></h2>
             </div>
-            <div className="form">
-                <form action="" onSubmit={handleSubmit}>
-                    <h2>Sign In</h2>
 
-                    <input type="email" placeholder="Email"/>
-                    <input type="password" placeholder="Password"/>
+            {/* form wrapper */}
+            <div className="form-wrapper">
+                {/* hub */}
+                <div className="hub">
+                    <img src={hub} 
+                        alt="" 
+                        width='100%'
+                    />
+                </div>
 
-                    <button type='submit'>Login</button>
-                </form>
+                {/* form */}
+                <div className="form">
+                    <form action="" onSubmit={handleSubmit}>
+                        <h2>Sign In</h2>
+                        {/* error message */}
+                        {error && <p className="err-msg">{error}</p>}
+                        <input type="email" placeholder="Email"/>
+                        <input type="password" placeholder="Password"/>
 
-                <button id="google" onClick={handleClick}>
-                <i className="fa-brands fa-google"></i>
-                    Sign In with Google
-                </button>
-                <p>Don't have an account?<Link to='/register'>Register</Link></p>
+                        <button type='submit'>Login</button>
+                    </form>
+
+                    <button id="google" onClick={handleClick}>
+                    <i className="fa-brands fa-google"></i>
+                        Sign In with Google
+                    </button>
+                    <p>Don't have an account?<Link to='/register'>Register</Link></p>
+                </div>
             </div>
         </div>
     )

@@ -5,10 +5,16 @@
 .App{
     display: flex;
     min-height: 100vh;
+
+    .title{
+        span{
+            color: $activeColor;
+        }
+    }
 }
 
 .navbar{
-    background-color: $primaryBgColor;
+    background-color: #43505F;
     width: 100%;
     padding: 20px;
     color: $primaryTxtColor;
@@ -23,7 +29,7 @@
 
 //<<<<<<<<<<< dashboard >>>>>>>>>>>>>>>>
 .dashboard{
-    width: 200px;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -106,7 +112,7 @@
 
 }
 
-//<<<<<<<<<<<<<<<<<< content >>>>>>>>>>>>>>>>>
+//>>>>>>>>>>>>>>>>>>>>> content 
 .content{
     flex: 1;
     background-color: #121212;
@@ -114,9 +120,36 @@
 
     // border-radius: 10px;
     padding: 20px;
+    padding-bottom: 0;
+    //>>>>>>>>>>>>> footer
+    footer{
+        width: 100%;
+        background: #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        margin-top: 20px;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        & > div{
+            // width: 100%;
+            padding: 10px;
+            h3{
+                text-transform: capitalize;
+                color: $primaryBgColor;
+                margin: 20px 0;
+            }
+
+            p{
+                font-size: 13px;
+            }
+        }
+    }
 }
 
-//<<<<<<<<<<<<<< courses >>>>>>>>>>>>>>>>>>>>>
+//>>>>>>>>>>>>>>>>>> courses 
 .courses{
 
     text-transform: capitalize;
@@ -186,6 +219,8 @@
     }
 }
 
+//>>>>>>>>>>>>>>>>>>>>> media query
+
 @media screen and (max-width: 600px) {
     .App{
         padding: 0;
@@ -196,11 +231,10 @@
 
     }
 
-    // dashboard
+    // >>>>>>>>>>>>>>>>>dashboard
     .dashboard{
         position: fixed;
         left: -300px;
-        background-color: $primaryBgColor;
         padding: 0 10px;
         transition: 0.3s ease;
         width: 300px;
@@ -225,9 +259,19 @@
         }
     }
 
-    // content
+    // >>>>>>>>>>>>>>>>>>content
     .content{
         border-radius: 0;
-        padding: 70px 0 0;
+        padding: 70px 0px 0;
+    }
+
+    //>>>>>>>>>>>>>>>>>>>>>>courses
+    .courses, .overview{
+        padding: 0 10px;
+    }
+
+    //>>>>>>>>>>>>>>>>>>>>>>>footer
+    footer{
+        
     }
 }

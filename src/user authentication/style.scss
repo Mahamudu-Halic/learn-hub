@@ -1,20 +1,37 @@
-
-.form-wrapper{
+@import '../components/variables';
+.login, .register{
     text-align: center;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    // width: 250px;
-    margin: 0 auto;
     overflow: hidden;
+    margin: 0 auto;
     background-color: #000;
     color: #fff;
+    gap: 30px;
+
+    .title{
+        // margin: 10px 0;
+        font-size: 25px;
+        span{
+            color: $activeColor;
+        }
+    }
+
+    .form-wrapper{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+
+        .err-msg{
+            color: red;
+        }
+    }
 
     .hub{
-        width: 50%;
-        padding: 30px;
+        width: 40%;
     }
 
     .form{
@@ -22,12 +39,11 @@
     }
     
     form{
-    /* margin: 0 auto; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     
         input{
             width: 100%;
@@ -40,10 +56,6 @@
             padding: 10px;
             outline: none;
             font-size: 16px;
-
-            &::placeholder{
-                color: #eee5e5;
-            }
         }
     
         
@@ -86,7 +98,7 @@
             }
 
             i{
-                color: #61988F;
+                color: $activeColor;
             }
         }
     }
