@@ -5,10 +5,13 @@ import Favorite from "../favorite/favorite"
 import UploadMaterial from "../upload material/upload-material"
 import Settings from "../settings/settings"
 import AddNewCourse from "../add new course/add-new-course"
-
+import background from '../../images/one.jpg'
 const Content = () => {
     return(
         <div className="content">
+            {/* <div className="overlay">
+                <img src={background} alt="image" />
+            </div> */}
             <Routes>
                 <Route exact path='/' element={<Overview />} />
                 <Route path='courses' element={<Courses />} />

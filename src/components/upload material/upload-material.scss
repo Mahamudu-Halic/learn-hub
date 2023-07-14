@@ -2,31 +2,54 @@
 .upload-file{
     min-height: 50vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
-    gap: 20px;
-    form{
+    color: $primaryTxtColor;
+    border-radius: 10px;
+    margin: 10% auto;
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+    .upload{
+        min-width: 200px;
+    }
+
+    .form{
         width: 300px;
+        text-align: center;
+
+        h3{
+            margin-bottom: 20px;
+        }
+    }
+    form{
+        width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
         label{
             display: block;
             height: 50px;
             width: 100%;
             background-color: white;
+            color: #000;
             padding: 10px;
             text-transform: capitalize;
             margin-bottom: 10px;
-
+            border-radius: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         input{
             width: 100%;
             background: $primaryBgColor;
+            padding: 10px;
             color: $primaryTxtColor;
+            border-radius: 10px;
         }
 
         select, button{
@@ -40,12 +63,14 @@
         select{
             padding: 10px;
             margin-bottom: 20px;
+            border-radius: 10px;
         }
 
         button{
             padding: 10px 20px;
             background-color: $primaryBgColor;
             color: $primaryTxtColor;
+            border-radius: 10px;
         }
 
         p{

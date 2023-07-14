@@ -1,13 +1,25 @@
 
 .form-wrapper{
     text-align: center;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
-    width: 250px;
+    // width: 250px;
     margin: 0 auto;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+
+    .hub{
+        width: 50%;
+        padding: 30px;
+    }
+
+    .form{
+        width: 300px;
+    }
     
     form{
     /* margin: 0 auto; */
@@ -20,14 +32,17 @@
         input{
             width: 100%;
             border: none;
+            // border-radius: 5px;
+            color: #fff;
             border-bottom: 1px gray solid;
+            background: none;
             // margin: 15px 0;
             padding: 10px;
             outline: none;
             font-size: 16px;
 
             &::placeholder{
-                font-size: 16px;
+                color: #eee5e5;
             }
         }
     
@@ -35,30 +50,50 @@
     }
     
     p{
-        font-size: 14px;
+        font-size: 13px;
         color: #7e7a7a;
     }
 
     a{
         text-decoration: none;
+        margin-left: 5px;
     }
 
     button{
         width: 100%;
         padding: 10px;
-        border: none;
-        border-radius: 20px;
-        background-color: #4683d3;
+        border: solid 1px #333;
+        border-radius: 5px;
+        // background-color: #4683d3c4;
+        background: transparent;
         cursor: pointer;
-        color: #ddddd7;
+        color: #fff;
         font-size: 16px;
+
+        &:hover{
+            background-color: #43505F;
+        }
         
         &#google{
             margin: 10px 0;
-            background-color: #ff3c00;
+            // background-color: #ff3c00bb;
             display: flex;
             justify-content: center;
             gap: 10px;
+
+            &:hover{
+                // background-color: #ff3c00;
+            }
+
+            i{
+                color: #61988F;
+            }
         }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hub{
+        display: none;
     }
 }

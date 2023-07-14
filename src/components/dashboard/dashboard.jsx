@@ -18,12 +18,12 @@ const dashboard = [
         icon: 'fa-solid fa-book'
 
     },
-    {
-        id: 3,
-        url: '/favorite',
-        title: 'Favorite',
-        icon: "fa-solid fa-star"
-    },
+    // {
+    //     id: 3,
+    //     url: '/favorite',
+    //     title: 'Favorite',
+    //     icon: "fa-solid fa-star"
+    // },
     // {
     //     id: 4,
     //     url: '/add-new-course',
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     logout
                 </button>
-            <   p>Halic&copy;2023</p>
+                <p>Halic&copy;2023</p>
             </div>
 
         </div>

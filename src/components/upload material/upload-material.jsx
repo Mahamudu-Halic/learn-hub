@@ -4,13 +4,14 @@ import { ref, uploadBytesResumable } from "firebase/storage"
 import './upload-material.scss'
 import { useContext } from "react"
 import { Context } from "../context provider/context-provider"
+import upload from '../../images/upload1.svg'
 
+var fileName = ''
 const UploadMaterial = () => {
     //useContext
     const {courseList} = useContext(Context)
     //useState
     const [file, setFile] = useState('')
-    const [fileName, setFileName] = useState(file)
     const [course, setCourse] = useState('select course')
     const [college, setCollege] = useState('')
     const [success, setSuccess] = useState(false)
@@ -21,8 +22,9 @@ const UploadMaterial = () => {
         setSuccess(false)
         try{
             if(e.target.files){
+                fileName = e.target.files[0].name
                 setFile(e.target.files[0])
-                setFileName(e.target.files[0].name)
+
             }
         }
         catch(err){
@@ -39,9 +41,9 @@ const UploadMaterial = () => {
         await uploadBytesResumable(fileRef, file)
         await uploadBytesResumable(overviewFileRef, file)
         .then(() => {
+            fileName = ''
             setUploading(false)
             setSuccess(true)
-            setFileName('')
             setFile('')
         })
         .catch(err => console.log('upload', err))
@@ -74,48 +76,57 @@ const UploadMaterial = () => {
 
     return(
         <div className="upload-file">
-            <h3>Upload Material</h3>
-            <form action="#" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="file">{fileName}</label>
-                    <input type="file" onChange={handleChange} id="file"/>
-                </div>
+            <div className="upload">
+                <img src={upload} 
+                    alt="" 
+                    width="100%"
+                />
+            </div>
 
-                <div className="course">
-                    <select name="" id="" onChange={handleCollegeSelect}>
-                        <option value="">Select college</option>
-                        <option value='0'>College of Science</option>
-                        <option value="1">College of Engineering</option>
-                        <option value="2">College of Humanity and Social Science</option>
-                        <option value="3">College of Art and Built Environment</option>
-                        <option value="4">College of Health Science</option>
-                        <option value="5">College of Agriculture and Natural Resources</option>
-                    </select>
+            <div className="form">
+                <h3>Upload Material</h3>
+                <form action="#" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="file">{fileName}</label>
+                        <input type="file" onChange={handleChange} id="file"/>
+                    </div>
 
-                    {
-                        college === '' ?
-
-                        <p className="requirement">**select college to see courses**</p>
-
-                        :
-
-                        <select name="" id="" required onChange={handleSelect}>
-                            <option value="">select courses</option>
-                            {
-                                courseList[college].map(({id, course}) => {
-                                    return(
-                                        <option key={course}>{course}</option>
-                                        )
-                                    })
-                            }
+                    <div className="course">
+                        <select name="" id="" onChange={handleCollegeSelect}>
+                            <option value="">Select college</option>
+                            <option value='0'>College of Science</option>
+                            <option value="1">College of Engineering</option>
+                            <option value="2">College of Humanity and Social Science</option>
+                            <option value="3">College of Art and Built Environment</option>
+                            <option value="4">College of Health Science</option>
+                            <option value="5">College of Agriculture and Natural Resources</option>
                         </select>
-                    }
-                </div>
 
-                <button><i className='fa-solid fa-upload'></i> upload</button>
-                {uploading && <p>uploading...</p>}
-                {success && <p>upload successful</p>}
-            </form>
+                        {
+                            college === '' ?
+
+                            <p className="requirement">**select college to see courses**</p>
+
+                            :
+                            
+                            <select name="" id="" required onChange={handleSelect}>
+                                <option value="">select courses</option>
+                                {
+                                    courseList[college].map(({id, course}) => {
+                                        return(
+                                            <option key={course}>{course}</option>
+                                            )
+                                        })
+                                    }
+                            </select>
+                        }
+                    </div>
+
+                    <button><i className='fa-solid fa-upload'></i> upload</button>
+                    {uploading && <p>uploading...</p>}
+                    {success && <p>upload successful</p>}
+                </form>
+            </div>
         </div>
     )
 }

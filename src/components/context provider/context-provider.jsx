@@ -1,13 +1,44 @@
 import { createContext, useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import { auth, db, provider } from "../../firebase";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export const Context = createContext()
 
 const ContextProvider =({children}) => {
     const [currentUser, setCurrentUser] = useState()
     const [user, setUser] = useState('')
+    const navigate = useNavigate()
+
+    //google authentication
+    const handleGoogleAuth = account => {
+        console.log('google auth')
+        signInWithPopup(auth, provider)
+        .then( async (result) => {
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            const user = result.user;
+            account === 'register' && await setDoc(doc(db, 'users', user.uid), {
+                uid: user.uid,
+                displayName: user.displayName,
+                email: user.email,
+                description: '',
+                schoolEmail: '',
+                program: '',
+                phoneNumber: '',
+                level: ''
+            })
+            
+            navigate('/')
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage)
+            const email = error.customData.email;
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+    }
 
     useEffect(() => {
         
@@ -159,7 +190,8 @@ const ContextProvider =({children}) => {
         currentUser,
         setUser,
         user,
-        courseList
+        courseList,
+        handleGoogleAuth
     }
 
     return(

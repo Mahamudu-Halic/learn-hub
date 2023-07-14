@@ -160,7 +160,7 @@ const Courses = () => {
             {
                 course !== '' 
                 && 
-                <button onClick={goBack}>back</button>
+                <button onClick={goBack}><i className="fa-solid fa-arrow-left"></i> back</button>
             }
             </>
         </div>

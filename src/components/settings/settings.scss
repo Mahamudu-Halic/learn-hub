@@ -1,10 +1,28 @@
 @import "../variables";
+//>>>>>>>>>>>>settings
 .settings{
-
-    .user-profile{
-        margin-bottom: 20px;
+    .hero{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
     }
 
+//>>>>>>>>>>>>>>>>user-profile
+    .user-profile{
+        padding: 20px;
+        height: 150px;
+        background-color: $activeColor;
+    }
+
+    //>>>>>>>>>>>>>>>>>>info
+    .info{
+        background-color: #252524;
+        box-shadow: 0 10px 15px #1f1e1e;
+        padding: 20px;
+    }
+
+    //>>>>>>>>>>>>>>>>>button
     button{
         padding: 10px 20px;
         background-color: $activeColor;
@@ -13,25 +31,38 @@
         border: none;
         border-radius: 10px;
 
-        &.cancel{
-            background-color: red;
+        &.back{
+            background-color: #121212;
             
         }
     }
 
+    //>>>>>>>>>>>>>>>>saved
     .saved{
         color: green;
         font-weight: 600;
         margin-bottom: 10px;
+        background: none;
+        letter-spacing: 1px;
     }
 
-    
+    //>>>>>>>>>>>>>>>>>>form
+    .form{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
     form{
-        margin: 20px 0;
-        width: 60%;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
 
         p{
-            background-color: $primaryBgColor;
+            background-color: #121212;
+            min-height: 40px;
+            min-width: 300px;
             color: $primaryTxtColor;
             border-radius: 5px;
             padding: 10px;
@@ -45,10 +76,10 @@
             cursor: pointer;
             border: none;
             border-radius: 10px;
-
         }
+        //>>>>>>>>>>>>>>>>>>>>>form-group
         .form-group{
-            margin: 20px 0;
+            // margin: 20px 0;
             label{
                 display: block;
                 margin-bottom: 10px;
@@ -57,27 +88,45 @@
             }
 
             input, select, textarea{
+                min-height: 40px;
+                min-width: 300px;
                 width: 100%;
                 padding: 10px 20px;
                 border: none;
                 border-radius: 5px;
                 outline-color: $activeColor;
             }
+
+            textarea{
+                height: 40px;
+                max-width: 500px;
+            }
         }
     }
 
+    // >>>>>>>>>>>>>>edit-profile
     .edit-profile{
+        // display: block;
         background-color: $primaryBgColor;
+        background: #43505F;
         color: $primaryTxtColor;
         padding: 10px;
         border-radius: 10px;
+
+        &-inputs{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
     }
 }
 
 @media screen and (max-width: 600px) {
     .settings{
-        form{
-            width: 100%;
+        .edit-profile{
+            background: none;
+            padding: 0;
         }
     }
 }

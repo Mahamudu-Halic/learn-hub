@@ -1,8 +1,35 @@
 @import '../variables';
 .overview{
 
+    .homepage{
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        align-items: center;
+        // background-color: #000000;
+        height: 100vh;
+
+        div{
+            width: 50%;
+        }
+    }
+
     .title{
-        margin-bottom: 30px;
+        margin-bottom: 39px;
+
+        h1{
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        span{
+            color: $activeColor;
+        }
+
+        p{
+            font-size: 12px;
+            color: #a89e9e;
+        }
     }
 
     h2{
@@ -19,10 +46,11 @@
         text-decoration: none;
 
         div{
-            background-color: $activeColor;
+            // background-color: $activeColor;
+            background-color: $primaryBgColor;
             border-radius: 10px;
             width: 250px;
-            height: 50px;
+            height: 40px;
             display: flex;
             align-items: center;
 
@@ -39,13 +67,17 @@
     }
 
     .video{
-        width: 300px;
-
+        background-color: $primaryBgColor;
+        border-radius: 0 0 10px 10px;
+        width: 350px;
+        
         video{
             width: 100%;
+            cursor: pointer;
         }
-
+        
         h3{
+            padding: 10px;
             text-transform: capitalize;
         }
     }
@@ -53,6 +85,16 @@
 
 @media screen and (max-width: 600px) {
     .overview{
+
+        .homepage{
+            height: 50vh;
+            img{
+                display: none;
+            }
+            div{
+                width: 100%;
+            }
+        }
         h2{
             margin: 0 0 10px;
         }

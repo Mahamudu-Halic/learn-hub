@@ -2,7 +2,7 @@ import './overview.scss'
 import { storage } from '../../firebase'
 import {ref, listAll} from 'firebase/storage'
 import {useEffect, useState } from 'react'
-
+import learnhub from '../../images/learnhub.png'
 const Overview = () => {
     //useState
     const [getFiles, setGetFiles] = useState([])
@@ -32,13 +32,26 @@ const Overview = () => {
 
     return(
         <div className="overview">
+            <div className="homepage">
+                <div>
+                    <img src={learnhub} 
+                        alt="" 
+                        width='100%'
+                    />
+                </div>
+
+                <div className="title">
+                    <h1>Welcome to Learn<span>Hub</span></h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, veritatis? Perspiciatis numquam iure voluptates illum odit, voluptate iste nobis fugit adipisci! Fuga illo fugit odio dolorem id velit, eligendi at soluta? Laborum laboriosam consectetur at! Asperiores, non! Quos molestiae provident ut voluptates distinctio sed quas unde possimus non, consequuntur commodi.</p>
+                </div>
+            </div>
             {/* title */}
             <div className="title">
                 <h2>Explore Courses</h2>
             </div>
             {/* books */}
             <h2>Books <i className='fa-solid fa-book'></i></h2>
-            <div className="overview-content">      
+            <div className="overview-content files">      
                 {
                     getFiles.map((content, i) =>{
                         return(
@@ -55,7 +68,7 @@ const Overview = () => {
             </div>
             {/* videos */}
             <h2>Videos <i className='fa-solid fa-video'></i></h2>
-            <div className="overview-content">      
+            <div className="overview-content videos">      
                 {
                     getVideos.map((content, i) =>{
                         return(
