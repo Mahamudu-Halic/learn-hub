@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { auth, db } from "../../firebase"
+import { auth, db } from "../firebase"
 import { signOut } from "firebase/auth"
-import { Context } from "../context provider/context-provider"
+import { Context } from "./context-provider"
 import { doc, getDoc } from 'firebase/firestore'
 const dashboard = [
     {

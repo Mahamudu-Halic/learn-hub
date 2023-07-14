@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import { auth, db, provider } from "../../firebase";
+import { auth, db, provider } from "../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 

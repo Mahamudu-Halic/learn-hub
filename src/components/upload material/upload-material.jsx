@@ -3,7 +3,7 @@ import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
 import './upload-material.scss'
 import { useContext } from "react"
-import { Context } from "../context provider/context-provider"
+import { Context } from "../context-provider"
 import upload from '../../images/upload1.svg'
 
 var fileName = ''
@@ -88,7 +88,7 @@ const UploadMaterial = () => {
                 <form action="#" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="file">{fileName}</label>
-                        <input type="file" onChange={handleChange} id="file"/>
+                        <input type="file" onChange={handleChange} id="file" required/>
                     </div>
 
                     <div className="course">

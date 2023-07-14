@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import './courses.scss'
-import { Context } from '../context provider/context-provider'
+import { Context } from '../context-provider'
 import { storage } from '../../firebase'
 import {ref, listAll} from 'firebase/storage'
 import {useEffect, useState } from 'react'
