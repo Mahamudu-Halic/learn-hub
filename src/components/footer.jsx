@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Footer = () => {
     return(
         <footer>
@@ -17,7 +19,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="infomation">
                 <h3>information</h3>
                 <p>about us</p>
                 <p>more seaerch</p>
@@ -25,7 +27,7 @@ const Footer = () => {
                 <p>testimonials</p>
                 <p>events</p>
             </div>
-            <div>
+            <div className="footer-links">
                 <h3>helpful links</h3>
                 <p>services</p>
                 <p>support</p>
@@ -34,11 +36,19 @@ const Footer = () => {
                 </p>
             </div>
 
-            <div>
-                <i className="fa-brands fa-facebook"></i>
-                <i className="fa-brands fa-twitter"></i>
-                <i className="fa-brands fa-github"></i>
-                <i className="fa-brands fa-linkedin"></i>
+            <div className="media">
+                <a href="#" target="_blank">
+                    <i className="fa-brands fa-facebook"></i>
+                </a>
+                <a href="https://twitter.com/mahamuduhalic" target="_blank">
+                    <i className="fa-brands fa-twitter"></i>
+                </a>
+                <a href="https://github.com/Mahamudu-Halic" target="_blank">
+                    <i className="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/halic-mahamudu-361946216/" target="_blank">
+                    <i className="fa-brands fa-linkedin"></i>
+                </a>
             </div>
         </footer>
     )

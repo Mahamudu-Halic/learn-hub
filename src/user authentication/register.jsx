@@ -7,6 +7,7 @@ import hub from '../images/hub.png'
 import "./style.scss"
 import { useContext, useState } from "react";
 import { Context } from "../components/context-provider";
+import google from '../images/google.svg'
 
 const Register = () => {
     //useContext
@@ -75,7 +76,7 @@ const Register = () => {
                         <button type='submit'>Register</button>
                     </form>
                     <button id="google" onClick={handleClick}>
-                    <i className="fa-brands fa-google"></i>
+                    <img src={google} alt="" />
                         Sign up with Google
                     </button>
                     <p>Already have an account?<Link to='/'>Login</Link></p>

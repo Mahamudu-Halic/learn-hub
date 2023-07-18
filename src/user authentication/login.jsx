@@ -7,6 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 import hub from '../images/hub.png'
 import { useContext, useState } from "react";
 import { Context } from "../components/context-provider";
+import google from '../images/google.svg'
 const Login = () => {
     // useContext
     const {handleGoogleAuth} = useContext(Context)
@@ -68,7 +69,7 @@ const Login = () => {
                     </form>
 
                     <button id="google" onClick={handleClick}>
-                    <i className="fa-brands fa-google"></i>
+                        <img src={google} alt="" />
                         Sign In with Google
                     </button>
                     <p>Don't have an account?<Link to='/register'>Register</Link></p>

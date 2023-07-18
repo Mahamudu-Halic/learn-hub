@@ -76,11 +76,14 @@
         padding: 10px;
         border: solid 1px #333;
         border-radius: 5px;
-        // background-color: #4683d3c4;
         background: transparent;
         cursor: pointer;
         color: #fff;
         font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50px;
 
         &:hover{
             background-color: #43505F;
