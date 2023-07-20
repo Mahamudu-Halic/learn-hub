@@ -3,6 +3,11 @@ import { storage } from '../../firebase'
 import {ref, listAll} from 'firebase/storage'
 import {useEffect, useState } from 'react'
 import learnhub from '../../images/learnhub.png'
+import word from '../../images/word.png'
+import powerpoint from '../../images/powerpoint.png'
+import pdf from '../../images/pdf.png'
+import GenerateFiles from '../generateFiles'
+import GenerateVideos from '../generateVideos'
 const Overview = () => {
     //useState
     const [getFiles, setGetFiles] = useState([])
@@ -51,31 +56,31 @@ const Overview = () => {
             </div>
             {/* books */}
             <h2>Books <i className='fa-solid fa-book'></i></h2>
-            <div className="overview-content files">      
+            <div className="overview-content">
                 {
-                    getFiles.map((content, i) =>{
-                        return(
-                            <a key={i} href={`https://firebasestorage.googleapis.com/v0/b/learnhub-a3bd7.appspot.com/o/overview%2Ffiles%2F${content.name}?alt=media&token=85e91ed4-0860-49c1-9242-982c8d6fe6e7`}>
-                                <div>
-                                    <h3>
-                                        <i className='fa-solid fa-book'></i> {content.name}
-                                    </h3>
-                                </div>
-                            </a>
-                        )
+                //getFiles
+                getFiles.map((content, i) =>{
+                    return(
+                        <GenerateFiles 
+                        key={i}
+                        content={content}
+                        />
+                    )
                     })
                 }
             </div>
+
             {/* videos */}
             <h2>Videos <i className='fa-solid fa-video'></i></h2>
-            <div className="overview-content videos">      
+            <div className="overview-content videos"> 
                 {
+                //getVideos
                     getVideos.map((content, i) =>{
                         return(
-                            <div key={i} className='video'>
-                                <video controls muted src={`https://firebasestorage.googleapis.com/v0/b/learnhub-a3bd7.appspot.com/o/overview%2Fvideos%2F${content.name}?alt=media&token=85e91ed4-0860-49c1-9242-982c8d6fe6e7`} />
-                                <h3>{content.name}</h3>
-                            </div>
+                            <GenerateVideos 
+                                key={i}
+                                content={content}
+                            />
                         )
                     })
                 }

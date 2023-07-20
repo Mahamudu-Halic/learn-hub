@@ -37,45 +37,6 @@
         flex-wrap: wrap;
         gap: 20px;
     }
-
-    a{
-        text-decoration: none;
-
-        div{
-            background-color: $primaryBgColor;
-            border-radius: 10px;
-            width: 250px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-
-            h3{
-                font-size: 0.9rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                margin: 20px;
-                color: $primaryTxtColor;
-                text-transform: capitalize;
-            }
-        }
-    }
-
-    .video{
-        background-color: $primaryBgColor;
-        border-radius: 0 0 10px 10px;
-        width: 350px;
-        
-        video{
-            width: 100%;
-            cursor: pointer;
-        }
-        
-        h3{
-            padding: 10px;
-            text-transform: capitalize;
-        }
-    }
 }
 
 @media screen and (max-width: 600px) {
@@ -97,9 +58,6 @@
 
         &-content{
             margin: 20px 0;
-        }
-        .video{
-            width: 100%;
         }
     }
 }
