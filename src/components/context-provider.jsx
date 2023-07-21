@@ -13,7 +13,6 @@ const ContextProvider =({children}) => {
 
     //google authentication
     const handleGoogleAuth = account => {
-        console.log('google auth')
         signInWithPopup(auth, provider)
         .then( async (result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -41,7 +40,6 @@ const ContextProvider =({children}) => {
     }
 
     useEffect(() => {
-        
         const unsub = onAuthStateChanged(auth, user => {
             try {
                 setCurrentUser(user)
@@ -56,6 +54,24 @@ const ContextProvider =({children}) => {
         }
         )
     }, [])
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setUser(docSnap.data())
+                } else {
+                console.log("No such document!");
+                }
+            } catch (error) {
+                console.log('dashboard getuser', error)
+            }
+        }
+
+        return (() => {getUser()})
+    }, [currentUser])
 
     //course list
     const courseList = [

@@ -1,39 +1,15 @@
 import './overview.scss'
-import { db, storage } from '../../firebase'
+import { storage } from '../../firebase'
 import {ref, listAll} from 'firebase/storage'
-import {useContext, useEffect, useState } from 'react'
+import {useEffect, useState } from 'react'
 import learnhub from '../../images/learnhub.png'
 import GenerateFiles from '../generateFiles'
 import GenerateVideos from '../generateVideos'
-import { doc, getDoc } from 'firebase/firestore'
-import { Context } from '../context-provider'
 const Overview = () => {
     //useState
     const [getFiles, setGetFiles] = useState([])
     const [getVideos, setGetVideos] = useState([])
-
-    //useContext
-    const {currentUser, setUser} = useContext(Context)
-
     //useEffect
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const docRef = doc(db, "users", currentUser.uid);
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setUser(docSnap.data())
-                } else {
-                console.log("No such document!");
-                }
-            } catch (error) {
-                console.log('dashboard getuser', error)
-            }
-        }
-
-        return (() => {getUser()})
-    }, [currentUser])
-
     useEffect(() => {
         try {
             //fetch files from firebase
