@@ -47,11 +47,11 @@ const dashboard = [
 
 const Dashboard = () => {
     const navigate = useNavigate()
-    const [active, setActive] = useState('Overview')
+    const [active, setActive] = useState(false)
     const {currentUser, user, setUser} = useContext(Context)
     // console.log('dashboard', currentUser)
-    const handleClick = value => {
-        setActive(value)
+    const handleClick = e => {
+        setActive(!active)
     }
 
     const logout = () => {
@@ -94,8 +94,8 @@ const Dashboard = () => {
                         <Link
                         key={id}
                         to={url}
-                        className={`${active === title ? 'active' : ''}`}
-                        onClick={() => handleClick(title)}
+                        className={`${window.location.pathname === `/learn-hub${url}` ? 'active' : ''}`}
+                        onClick={() => handleClick(url)}
                         >
                             <i className={icon}></i>
                             {title}
