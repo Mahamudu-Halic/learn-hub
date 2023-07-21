@@ -13,7 +13,7 @@ const Overview = () => {
     const [getVideos, setGetVideos] = useState([])
 
     //useContext
-    const {currentUser, user, setUser} = useContext(Context)
+    const {currentUser, setUser} = useContext(Context)
 
     //useEffect
     useEffect(() => {
@@ -32,7 +32,7 @@ const Overview = () => {
         }
 
         return (() => {getUser()})
-    }, [])
+    }, [currentUser])
 
     useEffect(() => {
         try {

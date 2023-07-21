@@ -1,9 +1,7 @@
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { Link } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db, provider } from "../firebase";
+import { auth } from "../firebase";
 import "./style.scss"
-import { doc, setDoc } from "firebase/firestore";
 import hub from '../images/hub.png'
 import { useContext, useState } from "react";
 import { Context } from "../components/context-provider";
@@ -21,7 +19,7 @@ const Login = () => {
         try{
             signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-            const user = userCredential.user;
+            // const user = userCredential.user;
             })
             .catch((error) => {
             const errorCode = error.code;

@@ -4,7 +4,6 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 import './settings.scss'
-let saving = false
 const Settings = () => {
     //useContext
     const { user, setUser, currentUser } = useContext(Context)
@@ -17,7 +16,6 @@ const Settings = () => {
     const [phoneNumber, setphoneNumber] = useState(user.phoneNumber)
     const [level, setlevel] = useState(user.level)
     const [saved, setSaved] = useState('')
-    // const [saving, setSaving] = useState(false)
 
     // assign values to state
     const assignCurrentValues = () => {
@@ -109,7 +107,6 @@ const Settings = () => {
             level
         })
         .then(() => {
-            saving = false
             setSaved('save successful')
         })
         

@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, provider, db } from "../firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import hub from '../images/hub.png'
 import "./style.scss"
