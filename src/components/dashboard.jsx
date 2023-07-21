@@ -59,23 +59,23 @@ const Dashboard = () => {
         navigate('/')
     }
 
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const docRef = doc(db, "users", currentUser.uid);
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setUser(docSnap.data())
-                } else {
-                console.log("No such document!");
-                }
-            } catch (error) {
-                console.log('dashboard getuser', error)
-            }
-        }
+    // useEffect(() => {
+    //     const getUser = async () => {
+    //         try {
+    //             const docRef = doc(db, "users", currentUser.uid);
+    //             const docSnap = await getDoc(docRef);
+    //             if (docSnap.exists()) {
+    //                 setUser(docSnap.data())
+    //             } else {
+    //             console.log("No such document!");
+    //             }
+    //         } catch (error) {
+    //             console.log('dashboard getuser', error)
+    //         }
+    //     }
 
-        return (() => {getUser()})
-    }, [])
+    //     return (() => {getUser()})
+    // }, [])
 
     return(
         <>
