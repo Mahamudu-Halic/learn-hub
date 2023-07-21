@@ -17,6 +17,24 @@ const Overview = () => {
 
     //useEffect
     useEffect(() => {
+        const getUser = async () => {
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setUser(docSnap.data())
+                } else {
+                console.log("No such document!");
+                }
+            } catch (error) {
+                console.log('dashboard getuser', error)
+            }
+        }
+
+        return (() => {getUser()})
+    }, [])
+
+    useEffect(() => {
         try {
             //fetch files from firebase
             const files = ref(storage, 'overview/files')
@@ -35,24 +53,6 @@ const Overview = () => {
         } catch (error) {
             console.log('overview', error)
         }
-    }, [])
-
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const docRef = doc(db, "users", currentUser.uid);
-                const docSnap = await getDoc(docRef);
-                if (docSnap.exists()) {
-                    setUser(docSnap.data())
-                } else {
-                console.log("No such document!");
-                }
-            } catch (error) {
-                console.log('dashboard getuser', error)
-            }
-        }
-
-        return (() => {getUser()})
     }, [])
 
     return(
