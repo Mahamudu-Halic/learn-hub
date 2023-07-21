@@ -30,6 +30,14 @@
         cursor: pointer;
         border: none;
         border-radius: 10px;
+        box-shadow: 0 0 0 black;
+        transition: 0.3s ease-in-out;
+        
+        &:hover{
+            box-shadow: 0 3px 5px black;
+        }
+
+
 
         &.back{
             background-color: #121212;
@@ -69,14 +77,6 @@
             cursor: no-drop;
         }
 
-        button{
-            padding: 10px 20px;
-            background-color: $activeColor;
-            color: $primaryTxtColor;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-        }
         //>>>>>>>>>>>>>>>>>>>>>form-group
         .form-group{
             // margin: 20px 0;

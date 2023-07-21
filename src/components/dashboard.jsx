@@ -81,11 +81,11 @@ const Dashboard = () => {
         <>
         <div className="navbar">
             <i className="hamburger fa-solid fa-bars" onClick={handleClick}></i>
-            <h3>LearnHub <i className="fa-solid fa-book-open"></i></h3>
+            <h3 className="title">Learn<span>Hub</span> <i className="fa-solid fa-book-open"></i></h3>
         </div>
         <div className={`dashboard ${active && 'active'}`}>
             <div className="dash-head">
-                <h1>LearnHub</h1>
+                <h1 className="title">Learn<span>Hub</span></h1>
                 <i className="fa-solid fa-close" onClick={handleClick}></i>
             </div>
             {

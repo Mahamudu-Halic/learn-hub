@@ -24,7 +24,7 @@
         flex-direction: row-reverse;
         align-items: center;
         justify-content: center;
-
+        
         .err-msg{
             color: red;
         }
@@ -33,7 +33,7 @@
     .hub{
         width: 40%;
     }
-
+    
     .form{
         width: 300px;
     }
@@ -69,6 +69,7 @@
     a{
         text-decoration: none;
         margin-left: 5px;
+        color: $activeColor;
     }
 
     button{
@@ -84,6 +85,7 @@
         align-items: center;
         justify-content: center;
         height: 50px;
+        transition: 0.3s ease-in-out;
 
         &:hover{
             background-color: #43505F;

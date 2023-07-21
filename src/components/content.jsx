@@ -11,7 +11,7 @@ const Content = () => {
                 <img src={background} alt="image" />
             </div> */}
             <Routes>
-                <Route exact path='/' element={<Overview />} />
+                <Route exact path='' element={<Overview />} />
                 <Route path='courses' element={<Courses />} />
                 <Route path='upload-material' element={<UploadMaterial />} />
                 <Route path='settings' element={<Settings />} />

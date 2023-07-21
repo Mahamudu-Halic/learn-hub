@@ -41,7 +41,13 @@
 
 @media screen and (max-width: 600px) {
     .overview{
-        padding: 0 20px;
+        // padding: 0 10px;
+
+        .overview-content{
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
         .homepage{
             height: 50vh;
@@ -54,10 +60,6 @@
         }
         h2{
             margin: 0 0 10px;
-        }
-
-        &-content{
-            margin: 20px 0;
         }
     }
 }

@@ -37,8 +37,6 @@ const Register = () => {
                 phoneNumber: '',
                 level: ''
             })
-
-            await setDoc(doc(db, 'files', res.user.uid), {})
             navigate('/')
         }
         catch(err){
