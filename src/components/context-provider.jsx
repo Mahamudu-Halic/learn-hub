@@ -71,7 +71,7 @@ const ContextProvider =({children}) => {
         }
 
         return (() => {getUser()})
-    }, [currentUser])
+    }, [])
 
     //course list
     const courseList = [

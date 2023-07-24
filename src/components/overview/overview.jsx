@@ -1,11 +1,15 @@
 import './overview.scss'
-import { storage } from '../../firebase'
+import { db, storage } from '../../firebase'
 import {ref, listAll} from 'firebase/storage'
-import {useEffect, useState } from 'react'
+import {useContext, useEffect, useState } from 'react'
 import learnhub from '../../images/learnhub.png'
 import GenerateFiles from '../generateFiles'
 import GenerateVideos from '../generateVideos'
+import { doc, getDoc } from 'firebase/firestore'
+import { Context } from '../context-provider'
 const Overview = () => {
+    //useContext
+    const {setUser, currentUser} = useContext(Context)
     //useState
     const [getFiles, setGetFiles] = useState([])
     const [getVideos, setGetVideos] = useState([])
@@ -30,6 +34,24 @@ const Overview = () => {
             console.log('overview', error)
         }
     }, [])
+
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    setUser(docSnap.data())
+                } else {
+                console.log("No such document!");
+                }
+            } catch (error) {
+                console.log('dashboard getuser', error)
+            }
+        }
+
+        return (() => {getUser()})
+    }, [currentUser])
 
     return(
         <div className="overview">

@@ -8,14 +8,6 @@ import { useContext } from 'react'
 import { Context } from './components/context-provider'
 const App = ()=> {
   const {currentUser} = useContext(Context)
-
-  const ProtectedRoute = ({children}) => {
-    if(!currentUser){
-      return <Navigate to='/login' />
-    }
-
-    return children
-  }
   return(
     <div>
       {

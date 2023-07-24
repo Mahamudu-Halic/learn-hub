@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { auth, db } from "../firebase"
+import { auth } from "../firebase"
 import { signOut } from "firebase/auth"
 import { Context } from "./context-provider"
-import { doc, getDoc } from 'firebase/firestore'
 const dashboard = [
     {
         id: 1,
@@ -48,7 +47,7 @@ const dashboard = [
 const Dashboard = () => {
     const navigate = useNavigate()
     const [active, setActive] = useState(false)
-    const {currentUser, user, setUser} = useContext(Context)
+    const {user} = useContext(Context)
     // console.log('dashboard', currentUser)
     const handleClick = e => {
         setActive(!active)
@@ -58,24 +57,6 @@ const Dashboard = () => {
         signOut(auth)
         navigate('/')
     }
-
-    // useEffect(() => {
-    //     const getUser = async () => {
-    //         try {
-    //             const docRef = doc(db, "users", currentUser.uid);
-    //             const docSnap = await getDoc(docRef);
-    //             if (docSnap.exists()) {
-    //                 setUser(docSnap.data())
-    //             } else {
-    //             console.log("No such document!");
-    //             }
-    //         } catch (error) {
-    //             console.log('dashboard getuser', error)
-    //         }
-    //     }
-
-    //     return (() => {getUser()})
-    // }, [])
 
     return(
         <>

@@ -35,7 +35,6 @@
     position: sticky;
     top: 0;
     font-size: 14px;
-    // background-color: $primaryBgColor;
     background: #43505F;
     padding-left: 5px;
     .dash-head{
@@ -201,39 +200,40 @@ footer{
 }
 
 // files
-.overview a, .courses a{
-    text-decoration: none;
-    color: $primaryTxtColor;
-    background-color: #a89e9e15;
-    border-radius: 10px;
+    .overview, .courses {
+        a{
+        text-decoration: none;
+        color: $primaryTxtColor;
+        background-color: #a89e9e15;
+        border-radius: 10px;
+        padding: 10px;
+        .files{
+            width: 230px;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            gap: 20px;
 
-    padding: 10px;
-    .files{
-        width: 230px;
-        min-width: 200px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        gap: 20px;
+            .file-image{
+                background-color: #a89e9e;
+                width: 70px;
+                border-radius: 10px;
+            }
 
-        .file-image{
-            background-color: #a89e9e;
-            width: 70px;
-            border-radius: 10px;
-        }
-
-        img{
-            width: 100%;
+            img{
+                width: 100%;
+            }
         }
     }
 }
-
 .video{
     background-color: $primaryBgColor;
     border-radius: 0 0 10px 10px;
     width: 350px;
+    height: fit-content;
     
     video{
         width: 100%;
@@ -260,13 +260,13 @@ footer{
 
     // >>>>>>>>>>>>>>>>>dashboard
     .dashboard{
-        gap: 20px;
+        // gap: 20px;
         position: fixed;
-        left: -300px;
+        left: -400px;
         padding: 0 10px;
         transition: 0.3s ease;
         height: 100%;
-        width: 300px;
+        width: 70%;
         z-index: 1;
         &.active{
             left: 0px;
@@ -279,19 +279,19 @@ footer{
             }
         }
 
-        .video{
-            width: 100%;
-        }
         a{
-            font-size: 1.4rem;
-            .files{
-                width: 150px;
-            }
+            border-radius: 0;
+            border-bottom: solid 1px $primaryBgColor;
+            padding: 20px;
         }
-
+        
         .bottom{
             font-size: 18px;
         }
+    }
+    
+    .video{
+        width: 100%;
     }
 
     // >>>>>>>>>>>>>>>>>>content
@@ -302,10 +302,11 @@ footer{
 
     //>>>>>>>>>>>>>>>>>>>>>>courses
     .courses, .overview{
-        margin: 0 20px;
+        margin: 0 10px;
         a{
             .files{
-                width: 130px;
+                min-width: 100%;
+                width: 140px;
             }
         }
     }
