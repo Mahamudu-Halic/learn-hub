@@ -320,9 +320,12 @@ footer{
 
     //>>>>>>>>>>>>>>>>>>>>>>>footer
     footer{
-        & > div {
-            padding-left: 20px;
-            border-left: solid 1px $primaryTxtColor;
+        .hero{
+            padding-bottom: 10px;
+            & > div {
+                padding-left: 20px;
+                border-left: solid 1px $primaryTxtColor;
+            }
         }
     }
 }
