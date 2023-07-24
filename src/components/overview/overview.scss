@@ -9,6 +9,10 @@
         // background-color: #000000;
         height: 100vh;
 
+        .overlap{
+            display: none;
+        }
+
         div{
             width: 50%;
         }
@@ -24,6 +28,7 @@
 
         p{
             font-size: 12px;
+            letter-spacing: 1.2px;
             color: #a89e9e;
         }
     }
@@ -52,12 +57,34 @@
         }
 
         .homepage{
+            position: relative;
+            padding: 0 10px;
             height: 50vh;
+            background: url('../../images/bg.jpeg') center no-repeat;
+            background-size: cover;
+            margin-bottom: 20px;
+
+            .overlap{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #22212173;
+            }
             img{
                 display: none;
             }
             div{
                 width: 100%;
+            }
+
+            .title{
+                z-index: 2;
+                p{
+                    color: $primaryTxtColor;
+                }
+
             }
         }
         h2{

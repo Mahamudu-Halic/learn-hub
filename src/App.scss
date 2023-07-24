@@ -84,6 +84,10 @@
         flex-direction: column;
         align-items: center;
         gap: 10px;
+
+        .user{
+            font-size: 14px;
+        }
         
         p{
             font-size: 12px;
@@ -164,18 +168,17 @@
 
 //>>>>>>>>>>>>> footer
 footer{
-
     width: 100%;
     background: #000;
     display: flex;
-    align-items: center;
+    // align-items: center;
     padding: 20px;
     margin-top: 20px;
     gap: 20px;
     flex-wrap: wrap;
 
     & > div{
-        // width: 100%;
+        flex: 1;
         padding: 10px;
         h3{
             text-transform: capitalize;
@@ -185,10 +188,11 @@ footer{
 
         p{
             font-size: 13px;
+            // width: 200px;
         }
     }
 
-    .media{
+    .media-icons{
         display: flex;
         gap: 10px;
 
@@ -208,8 +212,7 @@ footer{
         border-radius: 10px;
         padding: 10px;
         .files{
-            width: 230px;
-            min-width: 200px;
+            width: 180px;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -284,10 +287,6 @@ footer{
             border-bottom: solid 1px $primaryBgColor;
             padding: 20px;
         }
-        
-        .bottom{
-            font-size: 18px;
-        }
     }
     
     .video{
@@ -302,10 +301,9 @@ footer{
 
     //>>>>>>>>>>>>>>>>>>>>>>courses
     .courses, .overview{
-        margin: 0 10px;
+        // margin: 0 10px;
         a{
             .files{
-                min-width: 100%;
                 width: 140px;
             }
         }
@@ -313,5 +311,9 @@ footer{
 
     //>>>>>>>>>>>>>>>>>>>>>>>footer
     footer{
+        & > div {
+            padding-left: 20px;
+            border-left: solid 1px $primaryTxtColor;
+        }
     }
 }

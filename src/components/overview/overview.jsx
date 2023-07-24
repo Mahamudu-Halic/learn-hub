@@ -56,6 +56,7 @@ const Overview = () => {
     return(
         <div className="overview">
             <div className="homepage">
+            <div className="overlap"></div>
                 <div>
                     <img src={learnhub} 
                         alt="" 
@@ -65,7 +66,7 @@ const Overview = () => {
 
                 <div className="title">
                     <h1>Welcome to Learn<span>Hub</span></h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis, veritatis? Perspiciatis numquam iure voluptates illum odit, voluptate iste nobis fugit adipisci! Fuga illo fugit odio dolorem id velit, eligendi at soluta? Laborum laboriosam consectetur at! Asperiores, non! Quos molestiae provident ut voluptates distinctio sed quas unde possimus non, consequuntur commodi.</p>
+                    <p>LearnHub is an online learning platform for undergraduate students, providing personalized educational materials and fostering a collaborative community. With a user-centric design, it offers a seamless and enriched learning experience.</p>
                 </div>
             </div>
             {/* title */}
