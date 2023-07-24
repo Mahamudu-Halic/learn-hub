@@ -60,17 +60,19 @@
             position: relative;
             padding: 0 10px;
             height: 50vh;
-            background: url('../../images/bg.jpeg') center no-repeat;
+            background: url('../../images/bg.png') center no-repeat;
             background-size: cover;
             margin-bottom: 20px;
 
             .overlap{
+                display: block;
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: #22212173;
+                background-color: #0e0d0d69;
+                // z-index: 1;
             }
             img{
                 display: none;

@@ -73,10 +73,10 @@ const Dashboard = () => {
                 dashboard.map(({id, url, title, icon}) => {
                     return(
                         <Link
-                        key={id}
-                        to={url}
-                        className={`${window.location.pathname === `/learn-hub${url}` ? 'active' : ''}`}
-                        onClick={() => handleClick(url)}
+                            key={id}
+                            to={url}
+                            className={`${window.location.pathname === `/learn-hub${url}` ? 'active' : ''}`}
+                            onClick={() => handleClick(url)}
                         >
                             <i className={icon}></i>
                             {title}
