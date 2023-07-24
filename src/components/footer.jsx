@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 const Footer = () => {
     return(
         <footer>
+            <div className="hero">
+
             <div>
                 <div className="title">
                     <h2>Learn<span>Hub</span></h2>
@@ -42,6 +44,9 @@ const Footer = () => {
                     </a>
                 </div>
             </div>
+            </div>
+
+            <p>Created by Halic&copy;2023</p>
         </footer>
     )
 }

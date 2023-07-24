@@ -1,4 +1,4 @@
-import { storage } from "../../firebase"
+ import { storage } from "../../firebase"
 import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
 import './upload-material.scss'
@@ -108,7 +108,7 @@ const UploadMaterial = () => {
                             <p className="requirement">**select college to see courses**</p>
 
                             :
-                            
+                            <>
                             <select name="" id="" required onChange={handleSelect}>
                                 <option value="">select courses</option>
                                 {
@@ -119,6 +119,17 @@ const UploadMaterial = () => {
                                         })
                                     }
                             </select>
+
+                            <select name="" id="">
+                                <option value="">Select Year</option>
+                                <option value="">Year one</option>
+                                <option value="">Year two</option>
+                                <option value="">Year three</option>
+                                <option value="">Year four</option>
+                                <option value="">Year five</option>
+                                <option value="">Year six</option>
+                            </select>
+                            </>
                         }
                     </div>
 

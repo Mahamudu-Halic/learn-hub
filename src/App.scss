@@ -64,7 +64,7 @@
         text-decoration: none;
         padding: 10px 15px;
         color: $primaryTxtColor;
-        border-radius: 10px;
+        border-radius: 5px;
         font-size: 14px;
 
         &:hover{
@@ -170,35 +170,43 @@
 footer{
     width: 100%;
     background: #000;
-    display: flex;
-    // align-items: center;
     padding: 20px;
     margin-top: 20px;
-    gap: 20px;
-    flex-wrap: wrap;
 
-    & > div{
-        flex: 1;
-        padding: 10px;
-        h3{
-            text-transform: capitalize;
-            color: #666464;
-            margin: 20px 0;
-        }
-
-        p{
-            font-size: 13px;
-            // width: 200px;
-        }
+    & > p{
+        font-size: 12px;
     }
-
-    .media-icons{
+    .hero{
+        border-bottom: solid 1px $primaryTxtColor;
+        margin-bottom: 10px;
         display: flex;
-        gap: 10px;
+        // align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
 
-        a{
-            color: #fff;
-            font-size: 20px;
+        & > div{
+            flex: 1;
+            padding: 10px;
+            h3{
+                text-transform: capitalize;
+                color: #666464;
+                margin: 20px 0;
+            }
+
+            p{
+                font-size: 13px;
+                // width: 200px;
+            }
+        }
+        
+        .media-icons{
+            display: flex;
+            gap: 10px;
+            
+            a{
+                color: #fff;
+                font-size: 20px;
+            }
         }
     }
 }
