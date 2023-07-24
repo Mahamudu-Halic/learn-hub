@@ -55,24 +55,6 @@ const ContextProvider =({children}) => {
         )
     }, [])
 
-    // useEffect(() => {
-    //     const getUser = async () => {
-    //         try {
-    //             const docRef = doc(db, "users", currentUser.uid);
-    //             const docSnap = await getDoc(docRef);
-    //             if (docSnap.exists()) {
-    //                 setUser(docSnap.data())
-    //             } else {
-    //             console.log("No such document!");
-    //             }
-    //         } catch (error) {
-    //             console.log('dashboard getuser', error)
-    //         }
-    //     }
-
-    //     return (() => {getUser()})
-    // }, [])
-
     //course list
     const courseList = [
         //college of sciene
@@ -138,6 +120,9 @@ const ContextProvider =({children}) => {
             },
             {
                 course: 'social work and sociology'
+            },
+            {
+                course: 'logistics and supply chain management'
             },
             {
                 course: 'accounting and finance'
