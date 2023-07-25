@@ -122,8 +122,9 @@
     flex: 1;
     background-color: #121212;
     color: $primaryTxtColor;
-
-    // border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 20px;
     padding-bottom: 0;
 }

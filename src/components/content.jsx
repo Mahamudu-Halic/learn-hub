@@ -4,6 +4,13 @@ import Courses from "./courses/courses"
 import UploadMaterial from "./upload material/upload-material"
 import Settings from "./settings/settings"
 import Footer from "./footer"
+import Kommunicate from "@kommunicate/kommunicate-chatbot-plugin";
+
+Kommunicate.init("377d67da69798082ec9fd93c99ae7e478", {
+    automaticChatOpenOnNavigation: true,
+    popupWidget: true
+  });
+
 const Content = () => {
     return(
         <div className="content">
