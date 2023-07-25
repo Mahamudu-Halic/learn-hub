@@ -120,7 +120,7 @@ const UploadMaterial = () => {
                                     }
                             </select>
 
-                            <select name="" id="">
+                            {/* <select name="" id="">
                                 <option value="">Select Year</option>
                                 <option value="">Year one</option>
                                 <option value="">Year two</option>
@@ -128,7 +128,7 @@ const UploadMaterial = () => {
                                 <option value="">Year four</option>
                                 <option value="">Year five</option>
                                 <option value="">Year six</option>
-                            </select>
+                            </select> */}
                             </>
                         }
                     </div>
