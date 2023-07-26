@@ -5,7 +5,7 @@ import {useContext, useEffect, useState } from 'react'
 import learnhub from '../../images/learnhub.png'
 import GenerateFiles from '../generateFiles'
 import GenerateVideos from '../generateVideos'
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { Context } from '../context-provider'
 import Comment from '../comment'
 
@@ -46,7 +46,16 @@ const Overview = () => {
                 if (docSnap.exists()) {
                     setUser(docSnap.data())
                 } else {
-                console.log("No such document!");
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        displayName: '',
+                        email: user.email,
+                        description: "",
+                        schoolEmail: "",
+                        program: "",
+                        phoneNumber: "",
+                        level: ''
+                    })
                 }
             } catch (error) {
                 console.log('dashboard getuser', error)
@@ -73,7 +82,6 @@ const Overview = () => {
                     <p>LearnHub is an online learning platform for undergraduate students, providing personalized educational materials and fostering a collaborative community. With a user-centric design, it offers a seamless and enriched learning experience.</p>
                 </div>
             </div>
-            <Comment />
             {/* title */}
             <div className="title">
                 <h2>Explore Courses</h2>

@@ -34,18 +34,7 @@ const Settings = () => {
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setUser(docSnap.data())
-                } else {
-                    await setDoc(doc(db, 'users', user.uid), {
-                        uid: user.uid,
-                        displayName,
-                        email: user.email,
-                        description,
-                        schoolEmail,
-                        program,
-                        phoneNumber,
-                        level
-                    })
-                }
+                } 
             } catch (error) {
                 console.log('dashboard getuser', error)
             }

@@ -3,8 +3,8 @@ import { Context } from "./context-provider"
 import '../styles/comment.scss'
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { db } from "../firebase"
+let sending = false
 const Comment = ({contentName}) => {
-    // console.log(contentName)
     const {user} = useContext(Context)
 
     const [comment, setComment] = useState([{displayName: '', userComment: ''}])
@@ -18,7 +18,6 @@ const Comment = ({contentName}) => {
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     setComment(docSnap.data().comments)
-                    console.log("inside", docSnap.data().comments)
                 } else {
                     await setDoc(doc(db, 'comments', contentName), {
                         comments: [{displayName: "", userComment: ""}]
@@ -29,35 +28,56 @@ const Comment = ({contentName}) => {
             }
         }
         return (() => {getComments()})
-    }, [])
+    }, [active])
 
     // console.log(comment)
     const addComment = async e => {
         e.preventDefault()
+        sending = true
         setComment((prev)=> [...prev, {displayName: user.displayName, userComment}])
-        console.log(comment)
+        // console.log(comment)
         // update comments
         const updateProfile = doc(db, "comments", contentName);
         await updateDoc(updateProfile, {
             comments: comment
         })
-        .then(() => setUserComment(''))
+        .then(() => {
+            sending = false
+            setUserComment('')
+        })
         .catch(e => console.log("update", e))
     }
-
-    // console.log(comment)
 
     const handleCommentChange = e => {
         setUserComment(e.target.value)
     }
 
+    const handleUpdate = async () => {
+        if(active){
+            const updateProfile = doc(db, "comments", contentName);
+        await updateDoc(updateProfile, {
+            comments: comment
+        })
+        .then(() => {
+            sending = false
+            setUserComment('')
+            setActive(!active)
+        })
+        .catch(e => console.log("update", e))
+        }
+        setActive(!active)
+    }
+
     return(
         <div className="Comment">
-                <i className='fa-solid fa-comment' onClick={() => setActive(!active)}></i>
+            <div className="comment-icon" onClick={handleUpdate}>
+                <i className='fa-solid fa-comment'></i>
+                <p> {comment.length}</p>
+            </div>
                 {
                     active &&
-
-                    <form className="comment-session" onSubmit={addComment}>
+                    <>
+                    <div className="comment-session">
                     <div className="comment-area">
                         <h4>Comments</h4>
                         {
@@ -69,13 +89,19 @@ const Comment = ({contentName}) => {
                                     </div>
                                     )
                                 })
-                        }
+                            }
                     </div>
-                    <div className="text-area">
+                    <form className="text-area" onSubmit={addComment}>
                         <input type="text" required placeholder='Enter comment' value={userComment} onChange={handleCommentChange}/>
                         <button><i className='fa-solid fa-paper-plane'></i></button>
-                    </div>
-                </form>
+                    </form>
+                    {
+                        sending &&
+                        <p>sending...</p>
+                    }
+                <button className="close-btn" onClick={handleUpdate}>Close</button>
+                </div>
+                </>
                 }
             </div>
     )
