@@ -7,12 +7,15 @@ import GenerateFiles from '../generateFiles'
 import GenerateVideos from '../generateVideos'
 import { doc, getDoc } from 'firebase/firestore'
 import { Context } from '../context-provider'
+import Comment from '../comment'
+
 const Overview = () => {
     //useContext
-    const {setUser, currentUser} = useContext(Context)
+    const {setUser, currentUser, user} = useContext(Context)
     //useState
     const [getFiles, setGetFiles] = useState([])
     const [getVideos, setGetVideos] = useState([])
+    
     //useEffect
     useEffect(() => {
         try {
@@ -53,6 +56,7 @@ const Overview = () => {
         return (() => {getUser()})
     }, [currentUser])
 
+    
     return(
         <div className="overview">
             <div className="homepage">
@@ -69,10 +73,13 @@ const Overview = () => {
                     <p>LearnHub is an online learning platform for undergraduate students, providing personalized educational materials and fostering a collaborative community. With a user-centric design, it offers a seamless and enriched learning experience.</p>
                 </div>
             </div>
+            <Comment />
             {/* title */}
             <div className="title">
                 <h2>Explore Courses</h2>
+
             </div>
+            
             {/* books */}
             <h2>Books <i className='fa-solid fa-book'></i></h2>
             <div className="overview-content">

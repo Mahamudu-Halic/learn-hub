@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { Context } from "../context-provider"
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 import './settings.scss'
@@ -35,7 +35,16 @@ const Settings = () => {
                 if (docSnap.exists()) {
                     setUser(docSnap.data())
                 } else {
-                console.log("No such document!");
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        displayName,
+                        email: user.email,
+                        description,
+                        schoolEmail,
+                        program,
+                        phoneNumber,
+                        level
+                    })
                 }
             } catch (error) {
                 console.log('dashboard getuser', error)

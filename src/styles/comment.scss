@@ -1,0 +1,65 @@
+@import '../components/variables';
+.Comment{
+    i{
+        cursor: pointer;
+    }
+
+    .comment-session{
+
+        position: absolute;
+        
+        background-color: white;
+        width: fit-content;
+        overflow: hidden;
+    border-radius: 0 10px 10px 10px;
+    padding: 10px;
+    .comment-area{
+        width: 250px;
+        min-height: 50px;
+        max-height: 300px;
+        overflow-y: scroll;
+        color: #000;
+        
+        .comment{
+            font-size: 14px;
+            width: 90%;
+            margin-bottom: 10px;
+            
+            .user-comment{
+                margin-left: 15px;
+                max-width: 90%;
+            }
+            
+            .displayName{
+                border: none;
+                padding: 5px 0;
+            }
+        }
+    }
+    
+    .text-area{
+        display: flex;
+        
+        p{
+            color: black;
+        }
+        input{
+            width: 100%;
+            padding-left: 5px;
+            border-radius: 5px;
+            border: solid 1px #c3c3c3;
+            outline: none;
+        }
+        
+        button{
+            background-color: $activeColor;
+            color: $primaryTxtColor;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            padding: 5px 10px;
+        }
+    }
+}
+}
