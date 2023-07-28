@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react"
 import { Context } from "./context-provider"
-import '../styles/comment.scss'
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { db } from "../firebase"
+import '../styles/comment.scss'
 let sending = false
 const Comment = ({contentName}) => {
     const {user} = useContext(Context)
@@ -20,7 +20,7 @@ const Comment = ({contentName}) => {
                     setComment(docSnap.data().comments)
                 } else {
                     await setDoc(doc(db, 'comments', contentName), {
-                        comments: [{displayName: "", userComment: ""}]
+                        comments: [{displayName: "Admin✌️", userComment: "Please enter comments here"}]
                     })
                 }
             } catch (error) {
@@ -55,22 +55,22 @@ const Comment = ({contentName}) => {
     const handleUpdate = async () => {
         if(active){
             const updateProfile = doc(db, "comments", contentName);
-        await updateDoc(updateProfile, {
-            comments: comment
-        })
-        .then(() => {
-            sending = false
-            setUserComment('')
-            setActive(!active)
-        })
-        .catch(e => console.log("update", e))
+            await updateDoc(updateProfile, {
+                comments: comment
+            })
+            .then(() => {
+                sending = false
+                setUserComment('')
+                setActive(!active)
+            })
+            .catch(e => console.log("update", e))
         }
         setActive(!active)
     }
 
     return(
         <div className="Comment">
-            <div className="comment-icon" onClick={handleUpdate}>
+            <div className={`comment-icon ${active && "active"}`} onClick={handleUpdate}>
                 <i className='fa-solid fa-comment'></i>
                 <p> {comment.length}</p>
             </div>

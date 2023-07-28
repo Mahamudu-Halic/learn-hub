@@ -1,0 +1,59 @@
+@import "./variables";
+
+footer{
+    width: 100%;
+    background: #000;
+    padding: 20px;
+    margin-top: 20px;
+
+    & > p{
+        font-size: 12px;
+    }
+    .hero{
+        border-bottom: solid 1px $primaryTxtColor;
+        margin-bottom: 10px;
+        display: flex;
+        // align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        & > div{
+            flex: 1;
+            padding: 10px;
+            h3{
+                text-transform: capitalize;
+                color: #666464;
+                margin: 20px 0;
+            }
+
+            p{
+                font-size: 13px;
+                // width: 200px;
+            }
+        }
+        
+        .media-icons{
+            display: flex;
+            gap: 10px;
+            
+            a{
+                color: #fff;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    //>>>>>>>>>>>>>>>>>>>>>>>footer
+    footer{
+        .hero{
+            padding-bottom: 10px;
+            & > div {
+                padding-left: 20px;
+                border-left: solid 1px $primaryTxtColor;
+            }
+        }
+    }
+}

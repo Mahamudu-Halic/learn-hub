@@ -1,10 +1,10 @@
- import { storage } from "../../firebase"
+import { storage } from "../firebase"
 import { useState } from "react"
 import { ref, uploadBytesResumable } from "firebase/storage"
-import './upload-material.scss'
 import { useContext } from "react"
-import { Context } from "../context-provider"
-import upload from '../../images/upload1.svg'
+import { Context } from "./context-provider"
+import upload from '../images/upload1.svg'
+import '../styles/upload-material.scss'
 
 var fileName = ''
 const UploadMaterial = () => {
@@ -75,7 +75,7 @@ const UploadMaterial = () => {
     }
 
     return(
-        <div className="upload-file">
+        <div className="upload-material">
             <div className="upload">
                 <img src={upload} 
                     alt="" 

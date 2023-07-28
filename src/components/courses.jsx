@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import './courses.scss'
-import { Context } from '../context-provider'
-import { storage } from '../../firebase'
+import { Context } from './context-provider'
+import { storage } from '../firebase'
 import {ref, listAll} from 'firebase/storage'
 import {useEffect, useState } from 'react'
-import GenerateFiles from '../generateFiles'
-import GenerateVideos from '../generateVideos'
+import GenerateFiles from './generateFiles'
+import GenerateVideos from './generateVideos'
+import '../styles/courses.scss'
 
 const Courses = () => {
     //usecontext

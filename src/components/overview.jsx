@@ -1,13 +1,12 @@
-import './overview.scss'
-import { db, storage } from '../../firebase'
+import { db, storage } from '../firebase'
 import {ref, listAll} from 'firebase/storage'
 import {useContext, useEffect, useState } from 'react'
-import learnhub from '../../images/learnhub.png'
-import GenerateFiles from '../generateFiles'
-import GenerateVideos from '../generateVideos'
+import learnhub from '../images/learnhub.png'
+import GenerateFiles from './generateFiles'
+import GenerateVideos from './generateVideos'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
-import { Context } from '../context-provider'
-import Comment from '../comment'
+import { Context } from './context-provider'
+import '../styles/overview.scss'
 
 const Overview = () => {
     //useContext

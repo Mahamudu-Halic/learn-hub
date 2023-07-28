@@ -1,9 +1,8 @@
 import word from '../images/word.png'
 import pdf from '../images/pdf.png'
 import powerpoint from '../images/powerpoint.png'
-
-import './overview/overview.scss'
 import Comment from './comment'
+import '../styles/overview.scss'
 
 const GenerateFiles = props => {
     const {content} = props

@@ -1,21 +1,29 @@
-@import '../components/variables';
+@import './variables';
 .Comment{
     
     .comment-icon{
         display: flex;
         align-items: center;
         gap: 5px;
-        background-color: $activeColor;
         width: fit-content;
         padding: 10px;
         border-radius: 5px;
         cursor: pointer;
+        z-index: 2;
+
+        &.active{
+            background-color: $activeColor;
+        }
+        
+        &:hover{
+            background-color: $activeColor;
+        }
     }
 
     .comment-session{
         position: absolute;
         background-color: white;
-        width: 200px;
+        width: 40%;
         overflow: hidden;
         border-radius: 10px;
         margin-top: 10px;

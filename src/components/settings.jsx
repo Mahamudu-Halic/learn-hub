@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react"
-import { Context } from "../context-provider"
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { Context } from "./context-provider"
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
-import './settings.scss'
+import '../styles/settings.scss'
 const Settings = () => {
     //useContext
     const { user, setUser, currentUser } = useContext(Context)

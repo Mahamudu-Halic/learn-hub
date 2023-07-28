@@ -1,0 +1,122 @@
+@import "./variables";
+
+.dashboard{
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    font-size: 14px;
+    background: #43505F;
+    padding-left: 5px;
+    .dash-head{
+        margin: 20px 0px;
+        color: $primaryTxtColor;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        i{
+            font-size: 25px;
+            display: none;
+            cursor: pointer;
+        }
+        
+    }
+
+
+    i{
+        margin-right: 20px;
+    }
+
+
+    a{
+        display: block;
+        width: 90%;
+        text-decoration: none;
+        padding: 10px 15px;
+        color: $primaryTxtColor;
+        border-radius: 5px;
+        font-size: 14px;
+
+        &:hover{
+            background-color: $activeColor;
+        }
+        
+        &.active{
+            background-color: $activeColor;
+        }
+    }
+
+    .bottom{
+        margin-top: auto;
+        margin-bottom: 10px;
+        color: $primaryTxtColor;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        .user{
+            font-size: 14px;
+        }
+        
+        p{
+            font-size: 12px;
+            color: #9e9c9c;
+        }
+    }
+    
+    button{
+        text-transform: capitalize;
+        padding: 10px;
+        background: none;
+        color: $primaryTxtColor;
+        width: 80%;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: $activeColor;
+        }
+    }
+
+    span{
+        text-transform: capitalize;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+    // >>>>>>>>>>>>>>>>>dashboard
+    .dashboard{
+        // gap: 20px;
+        position: fixed;
+        left: -400px;
+        padding: 0 10px;
+        transition: 0.3s ease;
+        height: 100%;
+        width: 70%;
+        z-index: 2;
+        &.active{
+            left: 0px;
+        }
+
+        .dash-head{
+            font-size: 1rem;
+            i{
+                display: inline;
+            }
+        }
+
+        a{
+            border-radius: 0;
+            border-bottom: solid 1px $primaryBgColor;
+            padding: 20px;
+        }
+    }
+}

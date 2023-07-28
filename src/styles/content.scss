@@ -1,0 +1,20 @@
+@import "./variables";
+
+.content{
+    flex: 1;
+    background-color: #121212;
+    color: $primaryTxtColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+    // >>>>>>>>>>>>>>>>>>content
+    .content{
+        border-radius: 0;
+        padding: 70px 0px 0;
+    }
+}
